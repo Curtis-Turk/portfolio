@@ -1,0 +1,27 @@
+@import url("https://fonts.googleapis.com/css2?family=Karma&display=swap");
+
+body {
+  background-color: black;
+  font-family: "Karma", serif;
+}
+
+#main {
+  width: 100vh;
+  height: 100vh;
+  text-align: center;
+}
+
+#main-title {
+  font-size: 7vh;
+  font-weight: 100;
+  color: white;
+}
+
+/* 
+h1 {
+  position: absolute;
+  color: white;
+  transform: translateY(-50%);
+  text-align: center;
+}
+*/
