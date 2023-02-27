@@ -19,11 +19,6 @@ body {
   color: white;
 }
 
-/* 
-h1 {
-  position: absolute;
-  color: white;
-  transform: translateY(-50%);
-  text-align: center;
+.orange {
+  font-size: 4vh;
 }
-*/

@@ -1,11 +1,12 @@
 import React from "react";
 import "./App.css";
+import Title from "./components/Title";
 
 function App() {
   return (
     <div className="App">
       <div id="main">
-        <h1 id="main-title">Citrus</h1>
+        <Title />
       </div>
     </div>
   );
