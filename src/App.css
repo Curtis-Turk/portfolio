@@ -2,6 +2,7 @@
 
 body {
   background-color: black;
+  color: white;
   font-family: "Karma", serif;
 }
 
@@ -16,9 +17,15 @@ body {
 #main-title {
   font-size: 7vh;
   font-weight: 100;
-  color: white;
 }
 
-.orange {
+#main .orange {
   font-size: 4vh;
+  cursor: pointer;
+}
+
+#header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
