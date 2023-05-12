@@ -6,6 +6,24 @@ body {
   font-family: "Karma", serif;
 }
 
+#header {
+  position: absolute;
+  display: flex;
+  width: 500px;
+  padding-top: 10px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  justify-content: space-between;
+  align-items: center;
+}
+
+.orange {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
 #main {
   height: 100vh;
   display: flex;
@@ -21,11 +39,4 @@ body {
 
 #main .orange {
   font-size: 4vh;
-  cursor: pointer;
-}
-
-#header {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
 }
