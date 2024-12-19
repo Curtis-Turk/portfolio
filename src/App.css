@@ -40,3 +40,48 @@ body {
 #main .orange {
   font-size: 4vh;
 }
+
+#contact-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+#contact-title {
+  font-size: 5vh;
+  font-weight: 100;
+}
+
+#contact-links {
+  display: flex;
+  gap: 2rem;
+}
+
+#contact-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 2.5vh;
+  transition: color 0.3s ease;
+}
+
+#contact-links a:hover {
+  color: orange;
+}
+
+.App {
+  height: 100vh;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+
+#contact-section {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
