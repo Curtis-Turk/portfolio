@@ -1,13 +1,17 @@
 import "./App.css";
 import Header from "./components/Header";
-import Title from "./components/Title";
+import Main from "./components/Main";
+import { About } from "./components/About";
 import { Contact } from "./components/Contact";
+import { Projects } from "./components/Projects";
 
 function App() {
   return (
     <div className="App">
       <Header />
-      <Title />
+      <Main />
+      <About />
+      <Projects />
       <Contact />
     </div>
   );

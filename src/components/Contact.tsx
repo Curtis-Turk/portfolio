@@ -1,18 +1,25 @@
+import { Section, scrollToSection } from "../Section";
+
 export function Contact() {
   return (
-    <div id="contact-container">
-      <div className="orange">🟠</div>
+    <section id="contact-section">
+      <button
+        className="orange"
+        onClick={() => scrollToSection(Section.PROJECTS)}
+      >
+        🟠
+      </button>
       <h2 id="contact-title">Get in touch</h2>
       <div id="contact-links">
         <a
-          href="https://github.com/yourusername"
+          href="https://github.com/Curtis-Turk"
           target="_blank"
           rel="noopener noreferrer"
         >
           GitHub
         </a>
         <a
-          href="https://linkedin.com/in/curtis-turk"
+          href="https://linkedin.com/in/curtis-turk-bb650b253"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -20,7 +27,6 @@ export function Contact() {
         </a>
         <a href="mailto:curtis.c.turk@outlook.com">Email</a>
       </div>
-      <div className="orange">🟠</div>
-    </div>
+    </section>
   );
 }

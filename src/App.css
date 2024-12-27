@@ -6,9 +6,16 @@ body {
   font-family: "Karma", serif;
 }
 
+.App {
+  height: 100vh;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+
 #header {
   position: absolute;
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   width: 500px;
   padding-top: 10px;
   left: 50%;
@@ -17,37 +24,56 @@ body {
   align-items: center;
 }
 
-.orange {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-}
-
-#main {
-  height: 100vh;
+#header > div {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  position: relative;
 }
 
-#main-title {
-  font-size: 7vh;
-  font-weight: 100;
+#header .orange {
+  display: none;
+  justify-content: center;
+  width: 100%;
+  position: absolute;
+  top: 100%;
+  padding-top: 0.5rem;
 }
 
-#main .orange {
-  font-size: 4vh;
+#header > div:hover .orange {
+  display: flex;
 }
 
-#contact-container {
+#header > div > div:first-child {
+  color: white;
+  text-decoration: none;
+  font-size: 2.5vh;
+  transition: color 0.3s ease;
+}
+
+#header > div:hover > div:first-child {
+  color: orange;
+}
+
+section {
   height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 2rem;
+}
+
+section h2 {
+  font-size: 5vh;
+  font-weight: 100;
+}
+
+#main-title {
+  font-size: 7vh;
+  font-weight: 100;
 }
 
 #contact-title {
@@ -71,17 +97,98 @@ body {
   color: orange;
 }
 
-.App {
-  height: 100vh;
-  overflow-y: auto;
-  scroll-behavior: smooth;
+#projects-section {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-#contact-section {
-  height: 100vh;
+.orange {
+  font-size: 4vh;
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+  transition: transform 0.2s ease;
+}
+
+.orange:hover {
+  transform: scale(1.5);
+}
+
+.orange:active {
+  transform: scale(1.9);
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.project-card {
+  background: #1a1a1a;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+}
+
+.project-card h3 {
+  color: white;
+  margin: 0 0 1rem 0;
+}
+
+.project-card p {
+  color: #cccccc;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+.project-card .technologies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.project-card .tech-tag {
+  background: #333;
+  color: #fff;
+}
+
+#projects-title {
+  font-size: 5vh;
+  font-weight: 100;
+}
+
+.about-content {
+  max-width: 800px;
+  text-align: center;
+  margin: 2rem auto;
+}
+
+.about-content p {
+  font-size: 2.5vh;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.skills {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  gap: 2rem;
+  gap: 1rem;
+}
+
+.skills h3 {
+  font-size: 3vh;
+  font-weight: 100;
 }
