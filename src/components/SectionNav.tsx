@@ -17,16 +17,17 @@ export const scrollToSection = (sectionId: Section) => {
 };
 
 interface SectionNavProps {
-  currentSection: Section;
+  navigateToSection: Section;
 }
 
-export const SectionNav: React.FC<SectionNavProps> = ({ currentSection }) => {
+export const SectionNav: React.FC<SectionNavProps> = ({
+  navigateToSection,
+}) => {
   const sections = Object.values(Section);
-  const currentIndex = sections.indexOf(currentSection);
+  const sectionIndex = sections.indexOf(navigateToSection);
 
   const handleClick = () => {
-    const nextIndex = (currentIndex + 1) % sections.length;
-    scrollToSection(sections[nextIndex]);
+    scrollToSection(sections[sectionIndex]);
   };
 
   return (

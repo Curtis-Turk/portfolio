@@ -1,5 +1,5 @@
-import React from "react";
 import { Section, SectionNav } from "../components/SectionNav";
+import { useIntersectionObserver } from "../hooks/useIntersectionObserver";
 
 type Project = {
   title: string;
@@ -7,7 +7,13 @@ type Project = {
   technologies: string[];
 };
 
-export const Projects: React.FC = () => {
+interface ProjectProps {
+  onIntersect: (isIntersecting: boolean) => void;
+}
+
+export function Projects({ onIntersect }: ProjectProps) {
+  const ref = useIntersectionObserver(onIntersect);
+
   const projects: Project[] = [
     {
       title: "Weather App",
@@ -29,7 +35,7 @@ export const Projects: React.FC = () => {
   ];
 
   return (
-    <section id={Section.PROJECTS} className="section">
+    <section id={Section.PROJECTS} ref={ref} className="section">
       <h2 id="projects-title">Projects</h2>
       <div className="skills">
         <div className="technologies">
@@ -57,7 +63,7 @@ export const Projects: React.FC = () => {
           </div>
         ))}
       </div>
-      <SectionNav currentSection={Section.PROJECTS} />
+      <SectionNav navigateToSection={Section.CONTACT} />
     </section>
   );
-};
+}
