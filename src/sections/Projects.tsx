@@ -1,6 +1,5 @@
 import React from "react";
-import { Section } from "../Section";
-import { SectionNav } from "./SectionNav";
+import { Section, SectionNav } from "../components/SectionNav";
 
 type Project = {
   title: string;
@@ -30,8 +29,19 @@ export const Projects: React.FC = () => {
   ];
 
   return (
-    <section id="projects-section">
+    <section id="projects-section" className="section">
       <h2 id="projects-title">Projects</h2>
+      <div className="skills">
+        <div className="technologies">
+          {["TypeScript", "React", "Node.js", "Swift", "CSS"].map(
+            (skill, index) => (
+              <span key={index} className="tech-tag">
+                {skill}
+              </span>
+            )
+          )}
+        </div>
+      </div>
       <div className="projects-grid">
         {projects.map((project, index) => (
           <div key={index} className="project-card">

@@ -1,14 +1,9 @@
-import { Section, scrollToSection } from "../Section";
+import { Section, SectionNav } from "../components/SectionNav";
 
 export function Contact() {
   return (
-    <section id="contact-section">
-      <button
-        className="orange"
-        onClick={() => scrollToSection(Section.PROJECTS)}
-      >
-        🟠
-      </button>
+    <section id="contact-section" className="section">
+      <SectionNav currentSection={Section.CONTACT} />
       <h2 id="contact-title">Get in touch</h2>
       <div id="contact-links">
         <a

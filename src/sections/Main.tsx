@@ -1,8 +1,8 @@
-import { Section, scrollToSection } from "../Section";
+import { Section, scrollToSection } from "../components/SectionNav";
 
 function Main() {
   return (
-    <section id="main-section">
+    <section id="main-section" className="section">
       <h1 id="main-title">Citrus</h1>
       <button className="orange" onClick={() => scrollToSection(Section.ABOUT)}>
         🟠
