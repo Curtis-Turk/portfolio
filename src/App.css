@@ -10,21 +10,27 @@ body {
   height: 100vh;
   overflow-y: auto;
   scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
 }
 
 #header {
-  position: absolute;
+  position: fixed;
+  width: 100%;
+  padding: 10px 0;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  top: 0;
+  z-index: 1000;
+}
+
+.header-content {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   width: 500px;
-  padding-top: 10px;
-  left: 50%;
-  transform: translate(-50%, 0);
-  justify-content: space-between;
-  align-items: center;
 }
 
-#header > div {
+.header-content > div {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -33,7 +39,7 @@ body {
   position: relative;
 }
 
-#header .orange {
+.header-content .orange {
   display: none;
   justify-content: center;
   width: 100%;
@@ -42,19 +48,27 @@ body {
   padding-top: 0.5rem;
 }
 
-#header > div:hover .orange {
+.header-content > div:hover .orange {
   display: flex;
 }
 
-#header > div > div:first-child {
+.header-content > div > div:first-child {
   color: white;
   text-decoration: none;
   font-size: 2.5vh;
   transition: color 0.3s ease;
 }
 
-#header > div:hover > div:first-child {
+.header-content > div:hover > div:first-child {
   color: orange;
+}
+
+.header-content > div.active > div:first-child {
+  color: orange;
+}
+
+.header-content > div.active .orange {
+  display: flex;
 }
 
 section {
@@ -64,6 +78,8 @@ section {
   justify-content: center;
   align-items: center;
   gap: 2rem;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
 }
 
 section h2 {

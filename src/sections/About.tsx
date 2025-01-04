@@ -3,7 +3,7 @@ import { Section, SectionNav } from "../components/SectionNav";
 
 export const About: React.FC = () => {
   return (
-    <section id="about-section" className="section">
+    <section id={Section.ABOUT}>
       <h2 id="about-title">About</h2>
       <div className="about-content">
         <p>Hi, I'm Curtis.</p>

@@ -1,25 +1,56 @@
+import { useState, useEffect } from "react";
 import { Section, scrollToSection } from "../components/SectionNav";
 
 function Header() {
+  const [activeSection, setActiveSection] = useState(Section.MAIN);
+
+  const sectionNames = {
+    [Section.MAIN]: "🍊",
+    [Section.ABOUT]: "About",
+    [Section.PROJECTS]: "Projects",
+    [Section.CONTACT]: "Contact",
+  };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const windowHeight = window.innerHeight;
+
+      const sections = Object.values(Section);
+
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          if (
+            rect.top <= windowHeight * 0.3 &&
+            rect.bottom >= windowHeight * 0.3
+          ) {
+            setActiveSection(section);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll(); // Initial check
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <div id="header">
-      <div id="main" onClick={() => scrollToSection(Section.MAIN)}>
-        <div>🍊</div>
-      </div>
-
-      <div id="about" onClick={() => scrollToSection(Section.ABOUT)}>
-        <div>About</div>
-        <div className="orange">🟠</div>
-      </div>
-
-      <div id="projects" onClick={() => scrollToSection(Section.PROJECTS)}>
-        <div>Projects</div>
-        <div className="orange">🟠</div>
-      </div>
-
-      <div id="contact" onClick={() => scrollToSection(Section.CONTACT)}>
-        <div>Contact</div>
-        <div className="orange">🟠</div>
+      <div className="header-content">
+        {Object.values(Section).map((section) => (
+          <div
+            key={section}
+            id={`header-${section}`}
+            onClick={() => scrollToSection(section)}
+            className={activeSection === section ? "active" : ""}
+          >
+            <div>{sectionNames[section]}</div>
+            {section !== Section.MAIN && <div className="orange">🟠</div>}
+          </div>
+        ))}
       </div>
     </div>
   );

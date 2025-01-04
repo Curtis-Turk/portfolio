@@ -29,7 +29,7 @@ export const Projects: React.FC = () => {
   ];
 
   return (
-    <section id="projects-section" className="section">
+    <section id={Section.PROJECTS} className="section">
       <h2 id="projects-title">Projects</h2>
       <div className="skills">
         <div className="technologies">

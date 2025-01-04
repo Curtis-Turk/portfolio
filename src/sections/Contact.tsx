@@ -1,8 +1,8 @@
 import { Section, SectionNav } from "../components/SectionNav";
 
-export function Contact() {
+export const Contact = () => {
   return (
-    <section id="contact-section" className="section">
+    <section id={Section.CONTACT}>
       <SectionNav currentSection={Section.CONTACT} />
       <h2 id="contact-title">Get in touch</h2>
       <div id="contact-links">
@@ -24,4 +24,4 @@ export function Contact() {
       </div>
     </section>
   );
-}
+};
