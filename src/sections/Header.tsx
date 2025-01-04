@@ -23,7 +23,9 @@ function Header({ activeSection }: HeaderProps) {
             className={activeSection === section ? "active" : ""}
           >
             <div>{sectionNames[section]}</div>
-            {section !== Section.MAIN && <div className="orange">🟠</div>}
+            {section !== Section.MAIN && section !== activeSection && (
+              <div className="orange">🟠</div>
+            )}
           </div>
         ))}
       </div>

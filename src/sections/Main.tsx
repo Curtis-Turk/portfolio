@@ -11,7 +11,8 @@ function Main({ onIntersect }: MainProps) {
 
   return (
     <section id={Section.MAIN} ref={ref} className="section">
-      <h1 id="main-title">Citrus</h1>
+      <button id="citrus">🍊</button>
+      {/* <h1 id="main-title">Citrus</h1> */}
       <button className="orange" onClick={() => scrollToSection(Section.ABOUT)}>
         🟠
       </button>
