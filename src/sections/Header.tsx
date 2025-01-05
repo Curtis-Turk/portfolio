@@ -5,7 +5,7 @@ interface HeaderProps {
 }
 
 function Header({ activeSection }: HeaderProps) {
-  const sectionNames = {
+  const sectionNames: { [key in Section]: string } = {
     [Section.MAIN]: "🍊",
     [Section.ABOUT]: "About",
     [Section.PROJECTS]: "Projects",
