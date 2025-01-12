@@ -51,10 +51,21 @@ function Main({ onIntersect }: MainProps) {
             stiffness: 100,
             damping: 15,
           }}
-          // className={`letter ${animate ? "swap-animation" : ""}`}
+          className="title-letter"
+          // className={`letter ${targetPosition ? "swap-animation" : ""}`}
         >
           {char}
         </motion.span>
+      );
+    });
+  };
+
+  const characterDivs = () => {
+    return Title.CURTIS.split("").map((char, index) => {
+      return (
+        <div key={index} className={`position-${index}`}>
+          {char}
+        </div>
       );
     });
   };
@@ -64,7 +75,8 @@ function Main({ onIntersect }: MainProps) {
       <button id="citrus" onClick={cycleTitle}>
         {titleEmojis[currentTitle]}
       </button>
-      <h1 id="main-title">{renderTitle(currentTitle)}</h1>
+      <h1 id="main-title">{renderTitle(Title.CURTIS)}</h1>
+      <div id="main-title-characters">{characterDivs()}</div>
       <button className="orange" onClick={() => scrollToSection(Section.ABOUT)}>
         🟠
       </button>

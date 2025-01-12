@@ -102,6 +102,10 @@ button {
   height: 8vh;
 }
 
+.title-letter {
+  width: 40px;
+}
+
 .orange {
   font-size: 4vh;
   background: none;
