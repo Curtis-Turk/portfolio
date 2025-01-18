@@ -23,6 +23,10 @@ function Main({ onIntersect }: MainProps) {
   const ref = useIntersectionObserver(onIntersect);
   const [currentTitle, setCurrentTitle] = useState<Title>(Title.CURTIS);
 
+  const [selected, setSelected] = useState(1);
+
+  const ITEMS = [1, 2, 3];
+
   const getNextTitle = () => {
     const titles = Object.values(Title);
     const currentIndex = titles.indexOf(currentTitle);
@@ -52,7 +56,6 @@ function Main({ onIntersect }: MainProps) {
             damping: 15,
           }}
           className="title-letter"
-          // className={`letter ${targetPosition ? "swap-animation" : ""}`}
         >
           {char}
         </motion.span>
@@ -60,12 +63,15 @@ function Main({ onIntersect }: MainProps) {
     });
   };
 
-  const characterDivs = () => {
+  const titleCharacters = () => {
     return Title.CURTIS.split("").map((char, index) => {
       return (
-        <div key={index} className={`position-${index}`}>
+        <motion.div
+          key={index}
+          className={`title-letter position-${index + 1}`}
+        >
           {char}
-        </div>
+        </motion.div>
       );
     });
   };
@@ -75,11 +81,31 @@ function Main({ onIntersect }: MainProps) {
       <button id="citrus" onClick={cycleTitle}>
         {titleEmojis[currentTitle]}
       </button>
-      <h1 id="main-title">{renderTitle(Title.CURTIS)}</h1>
-      <div id="main-title-characters">{characterDivs()}</div>
+      <h1 id="main-title">{renderTitle(currentTitle)}</h1>
+      <div className="title-characters">{titleCharacters()}</div>
       <button className="orange" onClick={() => scrollToSection(Section.ABOUT)}>
         🟠
       </button>
+
+      <div className="items">
+        {ITEMS.map((item) => (
+          <div
+            onClick={() => setSelected(item)}
+            onKeyDown={(event: { key: string }) =>
+              event.key === "Enter" ? setSelected(item) : null
+            }
+            tabIndex={0}
+            className="item"
+          >
+            <div>Item {item}</div>
+            {item === selected ? (
+              <motion.div layoutId="arrow">
+                <div>🟠</div>
+              </motion.div>
+            ) : null}
+          </div>
+        ))}
+      </div>
     </section>
   );
 }

@@ -96,6 +96,10 @@ button {
   font-size: 9vh;
 }
 
+#citrus:active {
+  transform: scale(1.1);
+}
+
 #main-title {
   font-size: 7vh;
   font-weight: 100;
@@ -104,6 +108,53 @@ button {
 
 .title-letter {
   width: 40px;
+}
+
+#title-letter {
+  width: 50px;
+  height: 50px;
+  background-color: lightblue;
+  position: relative;
+}
+
+.title-characters {
+  display: flex;
+  flex-direction: row;
+  /* gap: 2rem; */
+  font-size: 7vh;
+  font-weight: 100;
+  height: 8vh;
+}
+
+.items {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+}
+
+.position-1 {
+  top: 10%;
+  left: 10%;
+}
+
+.position-2 {
+  top: 10%;
+  left: 30%;
+}
+
+.position-3 {
+  top: 10%;
+  left: 50%;
+}
+
+.position-4 {
+  top: 10%;
+  left: 70%;
+}
+
+.position-5 {
+  top: 10%;
+  left: 90%;
 }
 
 .orange {
