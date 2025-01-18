@@ -36,6 +36,7 @@ export function Projects({ onIntersect }: ProjectProps) {
 
   return (
     <section id={Section.PROJECTS} ref={ref} className="section">
+      <SectionNav navigateToSection={Section.ABOUT} />
       <h2 id="projects-title">Projects</h2>
       <div className="skills">
         <div className="technologies">

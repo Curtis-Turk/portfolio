@@ -10,7 +10,7 @@ export function Contact({ onIntersect }: ContactProps) {
 
   return (
     <section id={Section.CONTACT} ref={ref} className="section">
-      <SectionNav navigateToSection={Section.MAIN} />
+      <SectionNav navigateToSection={Section.PROJECTS} />
       <h2>Contact</h2>
       <div id="contact-links">
         <a

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Section, scrollToSection } from "../components/SectionNav";
 
 interface HeaderProps {
@@ -13,7 +13,7 @@ function Header({ activeSection }: HeaderProps) {
     [Section.CONTACT]: "Contact",
   };
 
-  const [theme, setTheme] = useState<string>("light");
+  const [theme, setTheme] = useState<string>("dark");
 
   const toggleTheme = () => {
     const newTheme = theme === "light" ? "dark" : "light";
@@ -21,23 +21,27 @@ function Header({ activeSection }: HeaderProps) {
     document.documentElement.setAttribute("data-theme", newTheme);
   };
 
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", "dark");
+  }, []);
+
   return (
     <div id="header">
       <div className="header-content">
         {Object.values(Section).map((section) => (
-          <div
+          <button
             key={section}
             id={`header-${section}`}
             onClick={() => scrollToSection(section)}
             className={activeSection === section ? "active" : ""}
           >
-            <div>{sectionNames[section]}</div>
+            {sectionNames[section]}
             {section !== Section.MAIN && section !== activeSection && (
               <div className="orange">🟠</div>
             )}
-          </div>
+          </button>
         ))}
-        <button onClick={toggleTheme}>Toggle Theme</button>
+        <button onClick={toggleTheme}>{theme === "light" ? "🌙" : "🌞"}</button>
       </div>
     </div>
   );
