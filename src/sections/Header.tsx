@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Section, scrollToSection } from "../components/SectionNav";
 
 interface HeaderProps {
@@ -21,10 +21,6 @@ function Header({ activeSection }: HeaderProps) {
     document.documentElement.setAttribute("data-theme", newTheme);
   };
 
-  useEffect(() => {
-    document.documentElement.setAttribute("data-theme", "dark");
-  }, []);
-
   return (
     <div id="header">
       <div className="header-content">
@@ -37,7 +33,7 @@ function Header({ activeSection }: HeaderProps) {
           >
             {sectionNames[section]}
             {section !== Section.MAIN && section !== activeSection && (
-              <div className="orange">🟠</div>
+              <div className="orange header-orange">🟠</div>
             )}
           </button>
         ))}

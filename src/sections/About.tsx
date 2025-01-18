@@ -15,6 +15,7 @@ export function About({ onIntersect }: AboutProps) {
       <div className="about-content">
         <p>Hi, I'm Curtis.</p>
         <p>Software developer, bike mechanic and all around tinkerer.</p>
+        <p>💻 🚲 ⚙️</p>
       </div>
       <SectionNav navigateToSection={Section.PROJECTS} />
     </section>
