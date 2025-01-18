@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Section, scrollToSection } from "../components/SectionNav";
 
 interface HeaderProps {
@@ -10,6 +11,14 @@ function Header({ activeSection }: HeaderProps) {
     [Section.ABOUT]: "About",
     [Section.PROJECTS]: "Projects",
     [Section.CONTACT]: "Contact",
+  };
+
+  const [theme, setTheme] = useState<string>("light");
+
+  const toggleTheme = () => {
+    const newTheme = theme === "light" ? "dark" : "light";
+    setTheme(newTheme);
+    document.documentElement.setAttribute("data-theme", newTheme);
   };
 
   return (
@@ -28,6 +37,7 @@ function Header({ activeSection }: HeaderProps) {
             )}
           </div>
         ))}
+        <button onClick={toggleTheme}>Toggle Theme</button>
       </div>
     </div>
   );
