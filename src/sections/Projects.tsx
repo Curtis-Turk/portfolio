@@ -5,7 +5,7 @@ import { useIntersectionObserver } from "../hooks/useIntersectionObserver";
 type Project = {
   title: string;
   description: string;
-  technologies: string[];
+  technologies: Technologies[];
 };
 
 interface ProjectProps {
@@ -15,9 +15,14 @@ interface ProjectProps {
 enum Technologies {
   TYPESCRIPT = "TypeScript",
   REACT = "React",
-  NODE = "Node.js",
   SWIFT = "Swift",
+  NODE = "Node",
   CSS = "CSS",
+  MONGODB = "MongoDB",
+  EXPRESS = "Express",
+  COMBINE = "Combine",
+  UIKIT = "UIKit",
+  SWIFTUI = "SwiftUI",
 }
 
 export function Projects({ onIntersect }: ProjectProps) {
@@ -29,18 +34,32 @@ export function Projects({ onIntersect }: ProjectProps) {
       title: "Weather App",
       description:
         "Real-time weather application that displays forecast data using external API integration.",
-      technologies: ["Swift", "REST API", "Combine", "UIKit"],
+      technologies: [
+        Technologies.SWIFT,
+        Technologies.COMBINE,
+        Technologies.UIKIT,
+        Technologies.SWIFTUI,
+      ],
     },
     {
       title: "NTSU",
       description:
         "NTSU radio companion app which allows users to listen to songs on different platforms",
-      technologies: ["Node.js", "React", "MongoDB", "Express"],
+      technologies: [
+        Technologies.NODE,
+        Technologies.REACT,
+        Technologies.MONGODB,
+        Technologies.EXPRESS,
+      ],
     },
     {
       title: "Portfolio Website",
       description: "A personal website to showcase my favourite projects",
-      technologies: ["React", "TypeScript", "CSS"],
+      technologies: [
+        Technologies.REACT,
+        Technologies.TYPESCRIPT,
+        Technologies.CSS,
+      ],
     },
   ];
 

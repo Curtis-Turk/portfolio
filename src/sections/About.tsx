@@ -14,8 +14,29 @@ export function About({ onIntersect }: AboutProps) {
       <h2 id="about-title">About</h2>
       <div className="about-content">
         <p>Hi, I'm Curtis.</p>
-        <p>Software developer, bike mechanic and all around tinkerer.</p>
-        <p>💻 🚲 ⚙️</p>
+        <p>💻 Software developer 🚲 bike mechanic and all around tinkerer.</p>
+        <p>
+          🍏 Currently working as an iOS developer for{" "}
+          <a
+            href="https://www.hl.co.uk/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-link"
+          >
+            HL
+          </a>
+        </p>
+        <p>
+          🌹 Building progressive tools with{" "}
+          <a
+            href="https://www.campaignlab.uk/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-link"
+          >
+            Campaign Lab
+          </a>
+        </p>
       </div>
       <SectionNav navigateToSection={Section.PROJECTS} />
     </section>

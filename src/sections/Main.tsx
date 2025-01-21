@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, useAnimation } from "framer-motion";
-import { Section, scrollToSection } from "../components/SectionNav";
+import { Section, SectionNav } from "../components/SectionNav";
 import { useIntersectionObserver } from "../hooks/useIntersectionObserver";
 
 enum Title {
@@ -58,7 +58,6 @@ function Main({ onIntersect }: MainProps) {
     <section id={Section.MAIN} ref={ref} className="section">
       <motion.button
         id="citrus"
-        key={currentTitle}
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         exit={{ opacity: 0, scale: 0.8 }}
@@ -70,13 +69,7 @@ function Main({ onIntersect }: MainProps) {
 
       <div className="title-characters">{titleCharacters(currentTitle)}</div>
 
-      <motion.button
-        className="orange"
-        onClick={() => scrollToSection(Section.ABOUT)}
-        animate={bounce}
-      >
-        🟠
-      </motion.button>
+      <SectionNav navigateToSection={Section.ABOUT} />
     </section>
   );
 }
