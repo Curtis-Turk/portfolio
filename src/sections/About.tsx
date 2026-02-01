@@ -11,10 +11,10 @@ export function About({ onIntersect }: AboutProps) {
   return (
     <section id={Section.ABOUT} ref={ref} className="section">
       <SectionNav navigateToSection={Section.MAIN} />
-      <h2 id="about-title">About</h2>
+      <h2 id="about-title">Hi, I'm Curtis</h2>
       <div className="about-content">
-        <p>Hi, I'm Curtis.</p>
-        <p>💻 Software developer 🚲 bike mechanic and all around tinkerer.</p>
+        <p>💻 Software developer</p>
+        <p>🚲 Bike mechanic</p>
         <p>
           🍏 Currently working as an iOS developer for{" "}
           <a

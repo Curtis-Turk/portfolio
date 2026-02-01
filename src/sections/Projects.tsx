@@ -5,6 +5,7 @@ import { useIntersectionObserver } from "../hooks/useIntersectionObserver";
 type Project = {
   title: string;
   description: string;
+  link: string;
   technologies: Technologies[];
 };
 
@@ -23,6 +24,7 @@ enum Technologies {
   COMBINE = "Combine",
   UIKIT = "UIKit",
   SWIFTUI = "SwiftUI",
+  TAILWIND = "Tailwind",
 }
 
 export function Projects({ onIntersect }: ProjectProps) {
@@ -31,15 +33,30 @@ export function Projects({ onIntersect }: ProjectProps) {
 
   const projects: Project[] = [
     {
+      title: "MpScorecard",
+      description:
+        "A static site where you can enter your postcode to see how your MP stacks up on several pivotal votes.",
+      technologies: [Technologies.TYPESCRIPT],
+      link: "https://mpreportcard.netlify.app/",
+    },
+    {
       title: "Weather App",
       description:
-        "Real-time weather application that displays forecast data using external API integration.",
+        "Real-time weather application that displays forecast data using openMeteo API",
       technologies: [
         Technologies.SWIFT,
         Technologies.COMBINE,
         Technologies.UIKIT,
         Technologies.SWIFTUI,
       ],
+      link: "",
+    },
+    {
+      title: "Remember to Vote",
+      description:
+        "A tool to get an SMS or WhatsApp reminder about your nearest polling station on election day.",
+      technologies: [Technologies.TYPESCRIPT],
+      link: "https://remembertovote.org.uk/",
     },
     {
       title: "NTSU",
@@ -51,6 +68,7 @@ export function Projects({ onIntersect }: ProjectProps) {
         Technologies.MONGODB,
         Technologies.EXPRESS,
       ],
+      link: "",
     },
     {
       title: "Portfolio Website",
@@ -60,47 +78,46 @@ export function Projects({ onIntersect }: ProjectProps) {
         Technologies.TYPESCRIPT,
         Technologies.CSS,
       ],
+      link: "",
+    },
+    {
+      title: "Travel-Lite",
+      description: "A webapp to help you make sustainable travel decisions",
+      technologies: [Technologies.REACT, Technologies.TAILWIND],
+      link: "",
     },
   ];
 
-  return (
-    <section id={Section.PROJECTS} ref={ref} className="section">
-      <SectionNav navigateToSection={Section.ABOUT} />
-      <h2 id="projects-title">Projects</h2>
-      <div className="projects-grid">
-        {projects.map((project, index) => (
-          <div key={index} className="project-card">
-            <h3>{project.title}</h3>
-            <p>{project.description}</p>
-            <div className="technologies">
-              {project.technologies.map((tech, index) => (
-                <span
-                  key={index}
-                  className={`tech-tag ${
-                    hoveredSkill === tech ? "highlight" : ""
-                  }`}
-                  onMouseEnter={() => setHoveredSkill(tech)}
-                  onMouseLeave={() => setHoveredSkill(null)}
-                >
-                  {tech}
-                </span>
-              ))}
-            </div>
-          </div>
-        ))}
-      </div>
+  const onProjectClick = (link: string) => {
+    window.open(link, "_blank", "noopener,noreferrer");
+  };
+
+  const projectCards = projects.map((project, index) => (
+    <div key={index} className="project-card">
+      <button onClick={() => onProjectClick(project.link)}>
+        <h3>{project.title}</h3>
+      </button>
+      <p>{project.description}</p>
       <div className="technologies">
-        {Object.values(Technologies).map((tech, index) => (
-          <button
+        {project.technologies.map((tech, index) => (
+          <span
             key={index}
             className={`tech-tag ${hoveredSkill === tech ? "highlight" : ""}`}
             onMouseEnter={() => setHoveredSkill(tech)}
             onMouseLeave={() => setHoveredSkill(null)}
           >
             {tech}
-          </button>
+          </span>
         ))}
       </div>
+    </div>
+  ));
+
+  return (
+    <section id={Section.PROJECTS} ref={ref} className="section">
+      <SectionNav navigateToSection={Section.ABOUT} />
+      <h2 id="projects-title">Projects</h2>
+      <div className="projects-grid">{projectCards}</div>
       <SectionNav navigateToSection={Section.CONTACT} />
     </section>
   );
