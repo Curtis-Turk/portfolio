@@ -16,6 +16,17 @@ function App() {
     }
   };
 
+  type SectionWithComponent = {
+    section: Section;
+    component: React.ReactNode;
+  };
+
+  const activeSections: SectionWithComponent[] [
+    { Section.MAIN, <Main />},
+    Section.ABOUT,
+    Section.CONTACT,
+  ];
+
   return (
     <div className="App">
       <Header activeSection={activeSection} />

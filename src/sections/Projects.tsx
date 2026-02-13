@@ -5,7 +5,7 @@ import { useIntersectionObserver } from "../hooks/useIntersectionObserver";
 type Project = {
   title: string;
   description: string;
-  link: string;
+  link?: string;
   technologies: Technologies[];
 };
 
@@ -49,7 +49,6 @@ export function Projects({ onIntersect }: ProjectProps) {
         Technologies.UIKIT,
         Technologies.SWIFTUI,
       ],
-      link: "",
     },
     {
       title: "Remember to Vote",
@@ -68,7 +67,6 @@ export function Projects({ onIntersect }: ProjectProps) {
         Technologies.MONGODB,
         Technologies.EXPRESS,
       ],
-      link: "",
     },
     {
       title: "Portfolio Website",
@@ -78,25 +76,21 @@ export function Projects({ onIntersect }: ProjectProps) {
         Technologies.TYPESCRIPT,
         Technologies.CSS,
       ],
-      link: "",
     },
     {
       title: "Travel-Lite",
       description: "A webapp to help you make sustainable travel decisions",
       technologies: [Technologies.REACT, Technologies.TAILWIND],
-      link: "",
     },
   ];
 
-  const onProjectClick = (link: string) => {
-    window.open(link, "_blank", "noopener,noreferrer");
-  };
-
   const projectCards = projects.map((project, index) => (
     <div key={index} className="project-card">
-      <button onClick={() => onProjectClick(project.link)}>
-        <h3>{project.title}</h3>
-      </button>
+      {project.link && (
+        <a href={project.link} target="_blank" rel="noreferrer">
+          <h3 className="">{project.title}</h3>
+        </a>
+      )}
       <p>{project.description}</p>
       <div className="technologies">
         {project.technologies.map((tech, index) => (
