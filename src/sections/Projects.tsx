@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { Section, SectionNav } from "../components/SectionNav";
+import { SectionNav } from "../components/SectionNav";
 import { useIntersectionObserver } from "../hooks/useIntersectionObserver";
+import { Section } from "../utils/sections";
 
 type Project = {
   title: string;

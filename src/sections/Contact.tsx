@@ -1,5 +1,6 @@
-import { Section, SectionNav } from "../components/SectionNav";
+import { SectionNav } from "../components/SectionNav";
 import { useIntersectionObserver } from "../hooks/useIntersectionObserver";
+import { Section } from "../utils/sections";
 
 interface ContactProps {
   onIntersect: (isIntersecting: boolean) => void;

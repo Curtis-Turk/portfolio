@@ -1,27 +1,19 @@
-import { useState, useEffect } from "react";
+import { Dispatch, SetStateAction, useEffect } from "react";
 import { motion, useAnimation } from "framer-motion";
-import { Section, SectionNav } from "../components/SectionNav";
+import { SectionNav } from "../components/SectionNav";
 import { useIntersectionObserver } from "../hooks/useIntersectionObserver";
-
-enum Title {
-  CURTIS = "curtis",
-  CITRUS = "citrus",
-  RUSTIC = "rustic",
-}
-
-const titleEmojis: { [key in Title]: string } = {
-  [Title.CURTIS]: "🐋",
-  [Title.CITRUS]: "🍊",
-  [Title.RUSTIC]: "🪵",
-};
+import { Title, titleEmojis } from "../utils/names";
+import { Section } from "../utils/sections";
 
 interface MainProps {
   onIntersect: (isIntersecting: boolean) => void;
+  currentTitle: Title;
+  setCurrentTitle: Dispatch<SetStateAction<Title>>;
 }
 
-function Main({ onIntersect }: MainProps) {
+function Main({ onIntersect, currentTitle, setCurrentTitle }: MainProps) {
   const ref = useIntersectionObserver(onIntersect);
-  const [currentTitle, setCurrentTitle] = useState<Title>(Title.CURTIS);
+
   const bounce = useAnimation();
 
   useEffect(() => {

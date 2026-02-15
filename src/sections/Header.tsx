@@ -1,18 +1,14 @@
 import { useState } from "react";
-import { Section, scrollToSection } from "../components/SectionNav";
+import { scrollToSection } from "../components/SectionNav";
+import { Title, titleEmojis } from "../utils/names";
+import { Section, sectionNames } from "../utils/sections";
 
 interface HeaderProps {
   activeSection: Section;
+  currentTitle: Title;
 }
 
-function Header({ activeSection }: HeaderProps) {
-  const sectionNames: { [key in Section]: string } = {
-    [Section.MAIN]: "🍊",
-    [Section.ABOUT]: "About",
-    [Section.PROJECTS]: "Projects",
-    [Section.CONTACT]: "Contact",
-  };
-
+function Header({ activeSection, currentTitle }: HeaderProps) {
   const [theme, setTheme] = useState<string>("dark");
 
   const toggleTheme = () => {
@@ -31,7 +27,9 @@ function Header({ activeSection }: HeaderProps) {
             onClick={() => scrollToSection(section)}
             className={activeSection === section ? "active" : ""}
           >
-            {sectionNames[section]}
+            {section === Section.MAIN
+              ? titleEmojis[currentTitle]
+              : sectionNames[section]}
             {section !== Section.MAIN && section !== activeSection && (
               <div className="orange header-orange">🟠</div>
             )}

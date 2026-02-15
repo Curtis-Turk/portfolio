@@ -1,11 +1,5 @@
 import React from "react";
-
-export enum Section {
-  MAIN = "main-section",
-  ABOUT = "about-section",
-  PROJECTS = "projects-section",
-  CONTACT = "contact-section",
-}
+import { Section } from "../utils/sections";
 
 export const scrollToSection = (sectionId: Section) => {
   const element = document.getElementById(sectionId);
