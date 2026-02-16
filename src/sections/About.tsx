@@ -39,7 +39,7 @@ export function About({ onIntersect }: AboutProps) {
           </a>
         </p>
       </div>
-      <SectionNav navigateToSection={Section.PROJECTS} />
+      {/* <SectionNav navigateToSection={Section.PROJECTS} /> */}
     </section>
   );
 }
