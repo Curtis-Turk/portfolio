@@ -8,6 +8,7 @@ type Project = {
   description: string;
   link?: string;
   technologies: Technologies[];
+  image?: string;
 };
 
 interface ProjectProps {
@@ -39,6 +40,7 @@ export function Projects({ onIntersect }: ProjectProps) {
         "A static site where you can enter your postcode to see how your MP stacks up on several pivotal votes.",
       technologies: [Technologies.TYPESCRIPT],
       link: "https://mpreportcard.netlify.app/",
+      image: "/MPScorecard.png",
     },
     {
       title: "Remember to Vote",
@@ -46,9 +48,10 @@ export function Projects({ onIntersect }: ProjectProps) {
         "A tool to get an SMS or WhatsApp reminder about your nearest polling station on election day.",
       technologies: [Technologies.TYPESCRIPT],
       link: "https://remembertovote.org.uk/",
+      image: "/rememberToVote.png",
     },
     {
-      title: "NTSU",
+      title: "NTSu",
       description:
         "NTSU radio companion app which allows users to listen to songs on different platforms",
       technologies: [
@@ -57,15 +60,26 @@ export function Projects({ onIntersect }: ProjectProps) {
         Technologies.MONGODB,
         Technologies.EXPRESS,
       ],
+      link: "https://github.com/Curtis-Turk/NTSu",
+      image: "/ntsu.png",
     },
   ];
 
   const projectCards = projects.map((project, index) => (
     <div key={index} className="project-card">
-      {project.link && (
+      {project.link ? (
         <a href={project.link} target="_blank" rel="noreferrer">
-          <h3 className="">{project.title}</h3>
+          <h3>{project.title}</h3>
         </a>
+      ) : (
+        <h3>{project.title}</h3>
+      )}
+      {project.image && (
+        <img
+          src={project.image}
+          alt={`${project.title} screenshot`}
+          className="project-image"
+        />
       )}
       <p>{project.description}</p>
       <div className="technologies">

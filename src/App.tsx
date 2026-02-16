@@ -11,7 +11,7 @@ import { useEffect } from "react";
 import { NameProvider } from "./hooks/NameContext";
 
 function App() {
-  const [currentName, setCurrentName] = useState<NAME>(NAME.CURTIS);
+  const [currentName, setCurrentName] = useState<NAME>(NAME.CITRUS);
   const [activeSection, setActiveSection] = useState<SECTION>(SECTION.MAIN);
 
   useEffect(() => {

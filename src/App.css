@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Karma&display=swap");
 
 :root {
+  --header-height: 20px;
   --background-color: #ffffff;
   --text-color: #000000;
   --primary-color: rgb(255, 85, 0);
@@ -13,15 +14,15 @@
 }
 
 [data-accent="curtis"] {
-  --primary-color: #0a74da;
+  --primary-color: rgb(60, 105, 241);
 }
 
 [data-accent="citrus"] {
-  --primary-color: #ff5500;
+  --primary-color: orange;
 }
 
 [data-accent="rustic"] {
-  --primary-color: #8b5a2b;
+  --primary-color: #8e643d;
 }
 
 body {
@@ -31,11 +32,13 @@ body {
 }
 
 section {
-  height: 100vh;
+  box-sizing: border-box;
+  min-height: calc(100vh - var(--header-height));
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding-top: var(--header-height);
   scroll-snap-align: start;
   scroll-snap-stop: always;
 }
@@ -62,6 +65,7 @@ button {
 #header {
   position: fixed;
   width: 100%;
+  height: var(--header-height);
   padding: 10px 0;
   background-color: var(--background-color);
   display: flex;
@@ -142,7 +146,7 @@ button {
   font-size: 7vh;
   font-weight: 100;
   height: 8vh;
-  padding-bottom: 100px;
+  padding-bottom: 40px;
 }
 
 .items {
@@ -205,8 +209,7 @@ button {
 }
 
 .projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  display: flex;
   gap: 2rem;
   padding-bottom: 2rem;
 }
@@ -217,6 +220,15 @@ button {
   padding: 1.5rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
   transition: transform 0.2s ease;
+}
+
+.project-image {
+  width: 100%;
+  height: clamp(160px, 25vh, 320px);
+  object-fit: cover;
+  display: block;
+  margin: 0 0 1rem 0;
+  border-radius: 6px;
 }
 
 .project-card:hover {
