@@ -15,7 +15,6 @@ export function About({ onIntersect }: AboutProps) {
       <h2 id="about-title">Hi, I'm Curtis</h2>
       <div className="about-content">
         <p>💻 Software developer</p>
-        <p>🚲 Bike mechanic</p>
         <p>
           🍏 Currently working as an iOS developer for{" "}
           <a
@@ -25,6 +24,17 @@ export function About({ onIntersect }: AboutProps) {
             className="text-link"
           >
             HL
+          </a>
+        </p>
+        <p>
+          🚲 Bike mechanic volunteering at the{" "}
+          <a
+            href="https://thebristolbikeproject.org/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-link"
+          >
+            Bristol Bike Project
           </a>
         </p>
         <p>

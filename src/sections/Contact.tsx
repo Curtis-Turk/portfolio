@@ -18,6 +18,7 @@ export function Contact({ onIntersect }: ContactProps) {
           href="https://github.com/Curtis-Turk"
           target="_blank"
           rel="noopener noreferrer"
+          className="text-link"
         >
           GitHub
         </a>
@@ -25,6 +26,7 @@ export function Contact({ onIntersect }: ContactProps) {
           href="https://linkedin.com/in/curtis-turk-bb650b253"
           target="_blank"
           rel="noopener noreferrer"
+          className="text-link"
         >
           LinkedIn
         </a>
