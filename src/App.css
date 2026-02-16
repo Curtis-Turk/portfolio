@@ -12,6 +12,18 @@
   --primary-color: orange;
 }
 
+[data-accent="curtis"] {
+  --primary-color: #0a74da;
+}
+
+[data-accent="citrus"] {
+  --primary-color: #ff5500;
+}
+
+[data-accent="rustic"] {
+  --primary-color: #8b5a2b;
+}
+
 body {
   background-color: var(--background-color);
   color: var(--text-color);

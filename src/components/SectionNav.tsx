@@ -1,7 +1,9 @@
 import React from "react";
-import { Section } from "../utils/sections";
+import { SECTION } from "../utils/sections";
+import { nameEmojis } from "../utils/names";
+import { useName } from "../hooks/NameContext";
 
-export const scrollToSection = (sectionId: Section) => {
+export const scrollToSection = (sectionId: SECTION) => {
   const element = document.getElementById(sectionId);
   if (element) {
     element.scrollIntoView({
@@ -11,14 +13,15 @@ export const scrollToSection = (sectionId: Section) => {
 };
 
 interface SectionNavProps {
-  navigateToSection: Section;
+  navigateToSection: SECTION;
 }
 
 export const SectionNav: React.FC<SectionNavProps> = ({
   navigateToSection,
 }) => {
-  const sections = Object.values(Section);
+  const sections = Object.values(SECTION);
   const sectionIndex = sections.indexOf(navigateToSection);
+  const { currentName } = useName();
 
   const handleClick = () => {
     scrollToSection(sections[sectionIndex]);
@@ -26,7 +29,7 @@ export const SectionNav: React.FC<SectionNavProps> = ({
 
   return (
     <button className="orange" onClick={handleClick}>
-      🟠
+      {nameEmojis[currentName].colourDot}
     </button>
   );
 };

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { SectionNav } from "../components/SectionNav";
 import { useIntersectionObserver } from "../hooks/useIntersectionObserver";
-import { Section } from "../utils/sections";
+import { SECTION } from "../utils/sections";
 
 type Project = {
   title: string;
@@ -84,11 +84,11 @@ export function Projects({ onIntersect }: ProjectProps) {
   ));
 
   return (
-    <section id={Section.PROJECTS} ref={ref} className="section">
-      <SectionNav navigateToSection={Section.ABOUT} />
+    <section id={SECTION.PROJECTS} ref={ref} className="section">
+      <SectionNav navigateToSection={SECTION.ABOUT} />
       <h2 id="projects-title">Projects</h2>
       <div className="projects-grid">{projectCards}</div>
-      <SectionNav navigateToSection={Section.CONTACT} />
+      <SectionNav navigateToSection={SECTION.CONTACT} />
     </section>
   );
 }

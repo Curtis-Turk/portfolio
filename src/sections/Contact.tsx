@@ -1,6 +1,6 @@
 import { SectionNav } from "../components/SectionNav";
 import { useIntersectionObserver } from "../hooks/useIntersectionObserver";
-import { Section } from "../utils/sections";
+import { SECTION } from "../utils/sections";
 
 interface ContactProps {
   onIntersect: (isIntersecting: boolean) => void;
@@ -10,8 +10,8 @@ export function Contact({ onIntersect }: ContactProps) {
   const ref = useIntersectionObserver(onIntersect);
 
   return (
-    <section id={Section.CONTACT} ref={ref} className="section">
-      <SectionNav navigateToSection={Section.PROJECTS} />
+    <section id={SECTION.CONTACT} ref={ref} className="section">
+      <SectionNav navigateToSection={SECTION.PROJECTS} />
       <h2>Contact</h2>
       <div id="contact-links">
         <a

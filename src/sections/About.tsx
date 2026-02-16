@@ -1,6 +1,6 @@
 import { SectionNav } from "../components/SectionNav";
 import { useIntersectionObserver } from "../hooks/useIntersectionObserver";
-import { Section } from "../utils/sections";
+import { SECTION } from "../utils/sections";
 
 interface AboutProps {
   onIntersect: (isIntersecting: boolean) => void;
@@ -10,8 +10,8 @@ export function About({ onIntersect }: AboutProps) {
   const ref = useIntersectionObserver(onIntersect);
 
   return (
-    <section id={Section.ABOUT} ref={ref} className="section">
-      <SectionNav navigateToSection={Section.MAIN} />
+    <section id={SECTION.ABOUT} ref={ref} className="section">
+      <SectionNav navigateToSection={SECTION.MAIN} />
       <h2 id="about-title">Hi, I'm Curtis</h2>
       <div className="about-content">
         <p>💻 Software developer</p>
@@ -39,7 +39,7 @@ export function About({ onIntersect }: AboutProps) {
           </a>
         </p>
       </div>
-      <SectionNav navigateToSection={Section.PROJECTS} />
+      <SectionNav navigateToSection={SECTION.PROJECTS} />
     </section>
   );
 }

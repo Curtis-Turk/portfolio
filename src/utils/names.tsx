@@ -1,11 +1,13 @@
-export enum Title {
+export enum NAME {
   CURTIS = "curtis",
   CITRUS = "citrus",
   RUSTIC = "rustic",
 }
 
-export const titleEmojis: { [key in Title]: string } = {
-  [Title.CURTIS]: "🐋",
-  [Title.CITRUS]: "🍊",
-  [Title.RUSTIC]: "🪵",
+export const nameEmojis: {
+  [key in NAME]: { title: string; colourDot: string };
+} = {
+  [NAME.CURTIS]: { title: "🐋", colourDot: "🔵" },
+  [NAME.CITRUS]: { title: "🍊", colourDot: "🟠" },
+  [NAME.RUSTIC]: { title: "🪵", colourDot: "🟤" },
 };

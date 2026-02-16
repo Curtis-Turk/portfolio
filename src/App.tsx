@@ -5,14 +5,20 @@ import Main from "./sections/Main";
 import { About } from "./sections/About";
 import { Contact } from "./sections/Contact";
 import { Projects } from "./sections/Projects";
-import { Title } from "./utils/names";
-import { Section } from "./utils/sections";
+import { NAME } from "./utils/names";
+import { SECTION } from "./utils/sections";
+import { useEffect } from "react";
+import { NameProvider } from "./hooks/NameContext";
 
 function App() {
-  const [activeSection, setActiveSection] = useState<Section>(Section.MAIN);
-  const [currentTitle, setCurrentTitle] = useState<Title>(Title.CURTIS);
+  const [currentName, setCurrentName] = useState<NAME>(NAME.CURTIS);
+  const [activeSection, setActiveSection] = useState<SECTION>(SECTION.MAIN);
 
-  const handleIntersection = (section: Section, isIntersecting: boolean) => {
+  useEffect(() => {
+    document.documentElement.setAttribute("data-accent", currentName);
+  }, [currentName]);
+
+  const handleIntersection = (section: SECTION, isIntersecting: boolean) => {
     if (isIntersecting) {
       setActiveSection(section);
     }
@@ -20,29 +26,31 @@ function App() {
 
   return (
     <div className="App">
-      <Header activeSection={activeSection} currentTitle={currentTitle} />
-      <Main
-        onIntersect={(isIntersecting) =>
-          handleIntersection(Section.MAIN, isIntersecting)
-        }
-        currentTitle={currentTitle}
-        setCurrentTitle={setCurrentTitle}
-      />
-      <About
-        onIntersect={(isIntersecting) =>
-          handleIntersection(Section.ABOUT, isIntersecting)
-        }
-      />
-      <Projects
-        onIntersect={(isIntersecting) =>
-          handleIntersection(Section.PROJECTS, isIntersecting)
-        }
-      />
-      <Contact
-        onIntersect={(isIntersecting) =>
-          handleIntersection(Section.CONTACT, isIntersecting)
-        }
-      />
+      <NameProvider
+        value={{ currentName: currentName, setCurrentName: setCurrentName }}
+      >
+        <Header activeSection={activeSection} />
+        <Main
+          onIntersect={(isIntersecting) =>
+            handleIntersection(SECTION.MAIN, isIntersecting)
+          }
+        />
+        <About
+          onIntersect={(isIntersecting) =>
+            handleIntersection(SECTION.ABOUT, isIntersecting)
+          }
+        />
+        <Projects
+          onIntersect={(isIntersecting) =>
+            handleIntersection(SECTION.PROJECTS, isIntersecting)
+          }
+        />
+        <Contact
+          onIntersect={(isIntersecting) =>
+            handleIntersection(SECTION.CONTACT, isIntersecting)
+          }
+        />
+      </NameProvider>
     </div>
   );
 }

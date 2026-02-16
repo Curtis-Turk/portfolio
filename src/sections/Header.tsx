@@ -1,15 +1,16 @@
 import { useState } from "react";
 import { scrollToSection } from "../components/SectionNav";
-import { Title, titleEmojis } from "../utils/names";
-import { Section, sectionNames } from "../utils/sections";
+import { nameEmojis } from "../utils/names";
+import { SECTION, sectionNames } from "../utils/sections";
+import { useName } from "../hooks/NameContext";
 
 interface HeaderProps {
-  activeSection: Section;
-  currentTitle: Title;
+  activeSection: SECTION;
 }
 
-function Header({ activeSection, currentTitle }: HeaderProps) {
+function Header({ activeSection }: HeaderProps) {
   const [theme, setTheme] = useState<string>("dark");
+  const { currentName } = useName();
 
   const toggleTheme = () => {
     const newTheme = theme === "light" ? "dark" : "light";
@@ -20,18 +21,20 @@ function Header({ activeSection, currentTitle }: HeaderProps) {
   return (
     <div id="header">
       <div className="header-content">
-        {Object.values(Section).map((section) => (
+        {Object.values(SECTION).map((section) => (
           <button
             key={section}
             id={`header-${section}`}
             onClick={() => scrollToSection(section)}
             className={activeSection === section ? "active" : ""}
           >
-            {section === Section.MAIN
-              ? titleEmojis[currentTitle]
+            {section === SECTION.MAIN
+              ? nameEmojis[currentName].title
               : sectionNames[section]}
-            {section !== Section.MAIN && section !== activeSection && (
-              <div className="orange header-orange">🟠</div>
+            {section !== SECTION.MAIN && section !== activeSection && (
+              <div className="orange header-orange">
+                {nameEmojis[currentName].colourDot}
+              </div>
             )}
           </button>
         ))}
