@@ -48,7 +48,7 @@ export function Projects({ onIntersect }: ProjectProps) {
         "A tool to get an SMS or WhatsApp reminder about your nearest polling station on election day.",
       technologies: [Technologies.TYPESCRIPT],
       link: "https://remembertovote.org.uk/",
-      image: "/rememberToVote.png",
+      image: "/RememberToVote.png",
     },
     {
       title: "NTSu",
@@ -61,7 +61,7 @@ export function Projects({ onIntersect }: ProjectProps) {
         Technologies.EXPRESS,
       ],
       link: "https://github.com/Curtis-Turk/NTSu",
-      image: "/ntsu.png",
+      image: "/NTSU.png",
     },
   ];
 
