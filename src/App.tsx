@@ -4,7 +4,7 @@ import Header from "./sections/Header";
 import Main from "./sections/Main";
 import { About } from "./sections/About";
 import { Contact } from "./sections/Contact";
-import { Projects } from "./sections/Projects";
+// import { Projects } from "./sections/Projects";
 import { Title } from "./utils/names";
 import { Section } from "./utils/sections";
 
@@ -33,11 +33,11 @@ function App() {
           handleIntersection(Section.ABOUT, isIntersecting)
         }
       />
-      <Projects
+      {/* <Projects
         onIntersect={(isIntersecting) =>
           handleIntersection(Section.PROJECTS, isIntersecting)
         }
-      />
+      /> */}
       <Contact
         onIntersect={(isIntersecting) =>
           handleIntersection(Section.CONTACT, isIntersecting)
