@@ -2,6 +2,8 @@ import { useState } from "react";
 import { SectionNav } from "../components/SectionNav";
 import { useIntersectionObserver } from "../hooks/useIntersectionObserver";
 import { SECTION } from "../utils/sections";
+import { nameEmojis } from "../utils/names";
+import { useName } from "../hooks/NameContext";
 
 type Project = {
   title: string;
@@ -32,7 +34,7 @@ enum Technologies {
 export function Projects({ onIntersect }: ProjectProps) {
   const ref = useIntersectionObserver(onIntersect);
   const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
-
+  const { currentName } = useName();
   const projects: Project[] = [
     {
       title: "MpScorecard",
@@ -65,8 +67,17 @@ export function Projects({ onIntersect }: ProjectProps) {
     },
   ];
 
-  const projectCards = projects.map((project, index) => (
-    <div key={index} className="project-card">
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const prev = () =>
+    setCurrentIndex((i) => (i - 1 + projects.length) % projects.length);
+  const next = () => setCurrentIndex((i) => (i + 1) % projects.length);
+  const goTo = (index: number) => setCurrentIndex(index);
+
+  const currentProject = projects[currentIndex];
+
+  const projectCard = (project: Project) => (
+    <div className="project-card carousel-card">
       {project.link ? (
         <a href={project.link} target="_blank" rel="noreferrer">
           <h3>{project.title}</h3>
@@ -95,13 +106,42 @@ export function Projects({ onIntersect }: ProjectProps) {
         ))}
       </div>
     </div>
-  ));
+  );
 
   return (
     <section id={SECTION.PROJECTS} ref={ref} className="section">
       <SectionNav navigateToSection={SECTION.ABOUT} />
       <h2 id="projects-title">Projects</h2>
-      <div className="projects-grid">{projectCards}</div>
+
+      <div className="projects-carousel">
+        <button
+          className="carousel-btn prev"
+          onClick={prev}
+          aria-label="Previous project"
+        >
+          {nameEmojis[currentName].colourDot}
+        </button>
+        {projectCard(currentProject)}
+        <button
+          className="carousel-btn next"
+          onClick={next}
+          aria-label="Next project"
+        >
+          {nameEmojis[currentName].colourDot}
+        </button>
+      </div>
+
+      <div className="carousel-indicators">
+        {projects.map((_, idx) => (
+          <button
+            key={idx}
+            className={`indicator ${idx === currentIndex ? "active" : ""}`}
+            onClick={() => goTo(idx)}
+            aria-label={`Go to project ${idx + 1}`}
+          />
+        ))}
+      </div>
+
       <SectionNav navigateToSection={SECTION.CONTACT} />
     </section>
   );

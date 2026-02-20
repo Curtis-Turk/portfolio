@@ -214,25 +214,79 @@ button {
   padding-bottom: 2rem;
 }
 
+.projects-carousel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto 1rem auto;
+}
+
+.carousel-card {
+  width: min(550px, 92%);
+  box-shadow: none;
+}
+
+.carousel-btn {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: var(--text-color);
+  padding: 0.5rem;
+}
+
+.carousel-btn:hover {
+  color: var(--primary-color);
+}
+
+.carousel-indicators {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #666;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.indicator.active {
+  background: var(--primary-color);
+}
+
+@media (max-width: 700px) {
+  .projects-carousel {
+    gap: 0.5rem;
+  }
+
+  .carousel-btn {
+    font-size: 1.4rem;
+  }
+}
+
 .project-card {
   background: #1a1a1a;
   border-radius: 8px;
   padding: 1.5rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-  transition: transform 0.2s ease;
 }
 
 .project-image {
   width: 100%;
   height: clamp(160px, 25vh, 320px);
-  object-fit: cover;
+  object-fit: contain;
   display: block;
   margin: 0 0 1rem 0;
   border-radius: 6px;
-}
-
-.project-card:hover {
-  transform: translateY(-5px);
 }
 
 .project-card h3 {
