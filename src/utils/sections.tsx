@@ -5,9 +5,9 @@ export enum SECTION {
   CONTACT = "contact-section",
 }
 
-export const sectionNames: { [key in SECTION]: string } = {
-  [SECTION.MAIN]: "🍊",
-  [SECTION.ABOUT]: "About",
-  [SECTION.PROJECTS]: "Projects",
-  [SECTION.CONTACT]: "Contact",
-};
+export const SECTIONS = [
+  { id: SECTION.MAIN, title: "🍊", order: 0 },
+  { id: SECTION.ABOUT, title: "About", order: 1 },
+  { id: SECTION.PROJECTS, title: "Projects", order: 2 },
+  { id: SECTION.CONTACT, title: "Contact", order: 3 },
+];

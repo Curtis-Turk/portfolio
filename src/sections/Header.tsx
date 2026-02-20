@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { scrollToSection } from "../components/SectionNav";
 import { nameEmojis } from "../utils/names";
-import { SECTION, sectionNames } from "../utils/sections";
+import { SECTION, SECTIONS } from "../utils/sections";
 import { useName } from "../hooks/NameContext";
 
 interface HeaderProps {
@@ -21,21 +21,16 @@ function Header({ activeSection }: HeaderProps) {
   return (
     <div id="header">
       <div className="header-content">
-        {Object.values(SECTION).map((section) => (
+        {SECTIONS.map((section) => (
           <button
-            key={section}
+            key={section.id}
             id={`header-${section}`}
-            onClick={() => scrollToSection(section)}
-            className={activeSection === section ? "active" : ""}
+            onClick={() => scrollToSection(section.id)}
+            className={activeSection === section.id ? "active" : ""}
           >
-            {section === SECTION.MAIN
+            {section.id === SECTION.MAIN
               ? nameEmojis[currentName].title
-              : sectionNames[section]}
-            {section !== SECTION.MAIN && section !== activeSection && (
-              <div className="orange header-orange">
-                {nameEmojis[currentName].colourDot}
-              </div>
-            )}
+              : section.title}
           </button>
         ))}
         <button onClick={toggleTheme}>{theme === "light" ? "🌙" : "🌞"}</button>

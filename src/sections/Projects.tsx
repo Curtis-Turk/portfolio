@@ -78,33 +78,31 @@ export function Projects({ onIntersect }: ProjectProps) {
 
   const projectCard = (project: Project) => (
     <div className="project-card carousel-card">
-      {project.link ? (
-        <a href={project.link} target="_blank" rel="noreferrer">
-          <h3>{project.title}</h3>
-        </a>
-      ) : (
+      <button
+        onClick={() => project.link && window.open(project.link, "_blank")}
+      >
         <h3>{project.title}</h3>
-      )}
-      {project.image && (
-        <img
-          src={project.image}
-          alt={`${project.title} screenshot`}
-          className="project-image"
-        />
-      )}
-      <p>{project.description}</p>
-      <div className="technologies">
-        {project.technologies.map((tech, index) => (
-          <span
-            key={index}
-            className={`tech-tag ${hoveredSkill === tech ? "highlight" : ""}`}
-            onMouseEnter={() => setHoveredSkill(tech)}
-            onMouseLeave={() => setHoveredSkill(null)}
-          >
-            {tech}
-          </span>
-        ))}
-      </div>
+        {project.image && (
+          <img
+            src={project.image}
+            alt={`${project.title} screenshot`}
+            className="project-image"
+          />
+        )}
+        <p>{project.description}</p>
+        <div className="technologies">
+          {project.technologies.map((tech, index) => (
+            <span
+              key={index}
+              className={`tech-tag ${hoveredSkill === tech ? "highlight" : ""}`}
+              onMouseEnter={() => setHoveredSkill(tech)}
+              onMouseLeave={() => setHoveredSkill(null)}
+            >
+              {tech}
+            </span>
+          ))}
+        </div>
+      </button>
     </div>
   );
 
@@ -114,19 +112,11 @@ export function Projects({ onIntersect }: ProjectProps) {
       <h2 id="projects-title">Projects</h2>
 
       <div className="projects-carousel">
-        <button
-          className="carousel-btn prev"
-          onClick={prev}
-          aria-label="Previous project"
-        >
+        <button className="orange" onClick={prev} aria-label="Previous project">
           {nameEmojis[currentName].colourDot}
         </button>
         {projectCard(currentProject)}
-        <button
-          className="carousel-btn next"
-          onClick={next}
-          aria-label="Next project"
-        >
+        <button className="orange" onClick={next} aria-label="Next project">
           {nameEmojis[currentName].colourDot}
         </button>
       </div>

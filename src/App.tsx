@@ -6,9 +6,10 @@ import { About } from "./sections/About";
 import { Contact } from "./sections/Contact";
 import { Projects } from "./sections/Projects";
 import { NAME } from "./utils/names";
-import { SECTION } from "./utils/sections";
 import { useEffect } from "react";
 import { NameProvider } from "./hooks/NameContext";
+import { SECTION } from "./utils/sections";
+import { SectionProvider } from "./hooks/SectionContext";
 
 function App() {
   const [currentName, setCurrentName] = useState<NAME>(NAME.CITRUS);
@@ -29,27 +30,29 @@ function App() {
       <NameProvider
         value={{ currentName: currentName, setCurrentName: setCurrentName }}
       >
-        <Header activeSection={activeSection} />
-        <Main
-          onIntersect={(isIntersecting) =>
-            handleIntersection(SECTION.MAIN, isIntersecting)
-          }
-        />
-        <About
-          onIntersect={(isIntersecting) =>
-            handleIntersection(SECTION.ABOUT, isIntersecting)
-          }
-        />
-        <Projects
-          onIntersect={(isIntersecting) =>
-            handleIntersection(SECTION.PROJECTS, isIntersecting)
-          }
-        />
-        <Contact
-          onIntersect={(isIntersecting) =>
-            handleIntersection(SECTION.CONTACT, isIntersecting)
-          }
-        />
+        <SectionProvider>
+          <Header activeSection={activeSection} />
+          <Main
+            onIntersect={(isIntersecting) =>
+              handleIntersection(SECTION.MAIN, isIntersecting)
+            }
+          />
+          <About
+            onIntersect={(isIntersecting) =>
+              handleIntersection(SECTION.ABOUT, isIntersecting)
+            }
+          />
+          <Projects
+            onIntersect={(isIntersecting) =>
+              handleIntersection(SECTION.PROJECTS, isIntersecting)
+            }
+          />
+          <Contact
+            onIntersect={(isIntersecting) =>
+              handleIntersection(SECTION.CONTACT, isIntersecting)
+            }
+          />
+        </SectionProvider>
       </NameProvider>
     </div>
   );

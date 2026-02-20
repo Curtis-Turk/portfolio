@@ -202,31 +202,14 @@ button {
   transition: background-color 0.3s ease;
 }
 
-#projects-section {
-  padding: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.projects-grid {
-  display: flex;
-  gap: 2rem;
-  padding-bottom: 2rem;
-}
-
 .projects-carousel {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  width: 100%;
+  width: 60%;
   max-width: 1000px;
   margin: 0 auto 1rem auto;
-}
-
-.carousel-card {
-  width: min(550px, 92%);
-  box-shadow: none;
 }
 
 .carousel-btn {
