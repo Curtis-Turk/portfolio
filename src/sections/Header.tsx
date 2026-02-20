@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { scrollToSection } from "../components/SectionNav";
 import { nameEmojis } from "../utils/names";
 import { SECTION, SECTIONS } from "../utils/sections";
 import { useName } from "../hooks/NameContext";
+import { useSection } from "../hooks/SectionContext";
 
 interface HeaderProps {
   activeSection: SECTION;
@@ -11,6 +11,7 @@ interface HeaderProps {
 function Header({ activeSection }: HeaderProps) {
   const [theme, setTheme] = useState<string>("dark");
   const { currentName } = useName();
+  const { navigateTo } = useSection();
 
   const toggleTheme = () => {
     const newTheme = theme === "light" ? "dark" : "light";
@@ -25,7 +26,7 @@ function Header({ activeSection }: HeaderProps) {
           <button
             key={section.id}
             id={`header-${section}`}
-            onClick={() => scrollToSection(section.id)}
+            onClick={() => navigateTo(section.id)}
             className={activeSection === section.id ? "active" : ""}
           >
             {section.id === SECTION.MAIN

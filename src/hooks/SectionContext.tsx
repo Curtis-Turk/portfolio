@@ -20,14 +20,14 @@ export const SectionProvider: React.FC<{ children: React.ReactNode }> = ({
 }) => {
   const [activeSection, setActiveSection] = useState<SECTION>(SECTION.MAIN);
 
-  const navigateTo = useCallback((id: SECTION) => {
-    const el = document.getElementById(id);
+  const navigateTo = useCallback((section: SECTION) => {
+    const el = document.getElementById(section);
     if (el) {
       el.scrollIntoView({ behavior: "smooth", block: "start" });
     }
-    setActiveSection(id);
+    setActiveSection(section);
     try {
-      window.history.replaceState(null, "", `#${id}`);
+      window.history.replaceState(null, "", `#${section}`);
     } catch (e) {
       console.log("Failed to update URL hash", e);
     }

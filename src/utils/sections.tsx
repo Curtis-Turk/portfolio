@@ -1,13 +1,26 @@
+import { About } from "../sections/About";
+import { Contact } from "../sections/Contact";
+import Main from "../sections/Main";
+import { Projects } from "../sections/Projects";
+
 export enum SECTION {
-  MAIN = "main-section",
-  ABOUT = "about-section",
-  PROJECTS = "projects-section",
-  CONTACT = "contact-section",
+  MAIN = "main",
+  ABOUT = "about",
+  PROJECTS = "projects",
+  CONTACT = "contact",
 }
 
-export const SECTIONS = [
-  { id: SECTION.MAIN, title: "🍊", order: 0 },
-  { id: SECTION.ABOUT, title: "About", order: 1 },
-  { id: SECTION.PROJECTS, title: "Projects", order: 2 },
-  { id: SECTION.CONTACT, title: "Contact", order: 3 },
+type Section = {
+  id: SECTION;
+  title: string;
+  order: number;
+  component: React.FC<any>;
+  showInNav?: boolean;
+};
+
+export const SECTIONS: Section[] = [
+  { id: SECTION.MAIN, title: "🍊", order: 0, component: Main },
+  { id: SECTION.ABOUT, title: "About", order: 1, component: About },
+  { id: SECTION.PROJECTS, title: "Projects", order: 2, component: Projects },
+  { id: SECTION.CONTACT, title: "Contact", order: 3, component: Contact },
 ];

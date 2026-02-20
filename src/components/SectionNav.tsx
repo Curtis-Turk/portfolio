@@ -4,15 +4,6 @@ import { nameEmojis } from "../utils/names";
 import { useSection } from "../hooks/SectionContext";
 import { useName } from "../hooks/NameContext";
 
-export const scrollToSection = (sectionId: SECTION) => {
-  const element = document.getElementById(sectionId);
-  if (element) {
-    element.scrollIntoView({
-      behavior: "smooth",
-    });
-  }
-};
-
 interface SectionNavProps {
   navigateToSection: SECTION;
 }

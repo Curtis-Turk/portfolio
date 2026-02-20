@@ -1,14 +1,10 @@
 import "./App.css";
 import { useState } from "react";
 import Header from "./sections/Header";
-import Main from "./sections/Main";
-import { About } from "./sections/About";
-import { Contact } from "./sections/Contact";
-import { Projects } from "./sections/Projects";
 import { NAME } from "./utils/names";
 import { useEffect } from "react";
 import { NameProvider } from "./hooks/NameContext";
-import { SECTION } from "./utils/sections";
+import { SECTION, SECTIONS } from "./utils/sections";
 import { SectionProvider } from "./hooks/SectionContext";
 
 function App() {
@@ -32,26 +28,17 @@ function App() {
       >
         <SectionProvider>
           <Header activeSection={activeSection} />
-          <Main
-            onIntersect={(isIntersecting) =>
-              handleIntersection(SECTION.MAIN, isIntersecting)
-            }
-          />
-          <About
-            onIntersect={(isIntersecting) =>
-              handleIntersection(SECTION.ABOUT, isIntersecting)
-            }
-          />
-          <Projects
-            onIntersect={(isIntersecting) =>
-              handleIntersection(SECTION.PROJECTS, isIntersecting)
-            }
-          />
-          <Contact
-            onIntersect={(isIntersecting) =>
-              handleIntersection(SECTION.CONTACT, isIntersecting)
-            }
-          />
+          {SECTIONS.map((section) => {
+            const SectionComponent = section.component;
+            return (
+              <SectionComponent
+                key={section.id}
+                onIntersect={(isIntersecting: boolean) =>
+                  handleIntersection(section.id, isIntersecting)
+                }
+              />
+            );
+          })}
         </SectionProvider>
       </NameProvider>
     </div>
