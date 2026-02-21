@@ -1,5 +1,5 @@
 import React from "react";
-import { SECTIONS, SECTION } from "../utils/sections";
+import { SECTIONS } from "../utils/sections";
 import { useSection } from "../hooks/SectionContext";
 import { useName } from "../hooks/NameContext";
 import { nameEmojis } from "../utils/names";
@@ -21,7 +21,7 @@ export const PrevNextNav: React.FC = () => {
         <button
           className="prev-fixed"
           aria-label="Previous section"
-          onClick={() => navigateTo(prev.id as SECTION)}
+          onClick={() => navigateTo(prev.id)}
         >
           {nameEmojis[currentName].colourDot}
         </button>
@@ -31,7 +31,7 @@ export const PrevNextNav: React.FC = () => {
         <button
           className="next-fixed"
           aria-label="Next section"
-          onClick={() => navigateTo(next.id as SECTION)}
+          onClick={() => navigateTo(next.id)}
         >
           {nameEmojis[currentName].colourDot}
         </button>
