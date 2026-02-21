@@ -244,6 +244,28 @@ button {
   color: var(--primary-color);
 }
 
+.prev-fixed,
+.next-fixed {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1100;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+}
+
+.prev-fixed {
+  top: calc(var(--header-height) + 44px);
+}
+
+.next-fixed {
+  bottom: 44px;
+}
+
 .carousel-indicators {
   display: flex;
   justify-content: center;
@@ -263,6 +285,13 @@ button {
 
 .indicator.active {
   background: var(--primary-color);
+}
+.previous-section,
+.next-section {
+}
+.previous-section {
+}
+.next-section {
 }
 
 @media (max-width: 700px) {

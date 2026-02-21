@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { SectionNav } from "../components/SectionNav";
 import { useIntersectionObserver } from "../hooks/useIntersectionObserver";
 import { SECTION } from "../utils/sections";
 import { nameEmojis } from "../utils/names";
@@ -108,7 +107,6 @@ export function Projects({ onIntersect }: ProjectProps) {
 
   return (
     <section id={SECTION.PROJECTS} ref={ref} className="section">
-      <SectionNav navigateToSection={SECTION.ABOUT} />
       <h2 id="projects-title">Projects</h2>
 
       <div className="projects-carousel">
@@ -131,8 +129,6 @@ export function Projects({ onIntersect }: ProjectProps) {
           />
         ))}
       </div>
-
-      <SectionNav navigateToSection={SECTION.CONTACT} />
     </section>
   );
 }

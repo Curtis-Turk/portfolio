@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { motion, useAnimation } from "framer-motion";
-import { SectionNav } from "../components/SectionNav";
 import { useIntersectionObserver } from "../hooks/useIntersectionObserver";
 import { NAME, nameEmojis } from "../utils/names";
 import { SECTION } from "../utils/sections";
@@ -59,8 +58,6 @@ function Main({ onIntersect }: MainProps) {
       </motion.button>
 
       <div className="title-characters">{titleCharacters(currentName)}</div>
-
-      <SectionNav navigateToSection={SECTION.ABOUT} />
     </section>
   );
 }

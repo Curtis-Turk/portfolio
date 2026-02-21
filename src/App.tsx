@@ -1,11 +1,12 @@
 import "./App.css";
 import { useState } from "react";
-import Header from "./sections/Header";
+import Header from "./components/Header";
 import { NAME } from "./utils/names";
 import { useEffect } from "react";
 import { NameProvider } from "./hooks/NameContext";
 import { SECTION, SECTIONS } from "./utils/sections";
-import { SectionProvider } from "./hooks/SectionContext";
+import { SectionProvider, useSection } from "./hooks/SectionContext";
+import PrevNextNav from "./components/PrevNextNav";
 
 function App() {
   const [currentName, setCurrentName] = useState<NAME>(NAME.CITRUS);
@@ -28,20 +29,48 @@ function App() {
       >
         <SectionProvider>
           <Header activeSection={activeSection} />
+          <PrevNextNav />
           {SECTIONS.map((section) => {
             const SectionComponent = section.component;
+
             return (
-              <SectionComponent
-                key={section.id}
-                onIntersect={(isIntersecting: boolean) =>
-                  handleIntersection(section.id, isIntersecting)
-                }
-              />
+              <div key={section.id} className="section-wrapper">
+                {SectionComponent && (
+                  <SectionWithSync
+                    section={section}
+                    SectionComponent={SectionComponent}
+                    onAppIntersect={handleIntersection}
+                  />
+                )}
+              </div>
             );
           })}
         </SectionProvider>
       </NameProvider>
     </div>
+  );
+}
+
+function SectionWithSync({
+  section,
+  SectionComponent,
+  onAppIntersect,
+}: {
+  section: any;
+  SectionComponent: React.ComponentType<any>;
+  onAppIntersect: (section: SECTION, isIntersecting: boolean) => void;
+}) {
+  const { setActiveSection } = useSection();
+
+  return (
+    <SectionComponent
+      onIntersect={(isIntersecting: boolean) => {
+        if (isIntersecting) {
+          setActiveSection(section.id);
+        }
+        onAppIntersect(section.id, isIntersecting);
+      }}
+    />
   );
 }
 

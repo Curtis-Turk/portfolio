@@ -1,4 +1,3 @@
-import { SectionNav } from "../components/SectionNav";
 import { useIntersectionObserver } from "../hooks/useIntersectionObserver";
 import { SECTION } from "../utils/sections";
 
@@ -11,7 +10,6 @@ export function Contact({ onIntersect }: ContactProps) {
 
   return (
     <section id={SECTION.CONTACT} ref={ref} className="section">
-      <SectionNav navigateToSection={SECTION.PROJECTS} />
       <h2>Contact</h2>
       <div id="contact-links">
         <a

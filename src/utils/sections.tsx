@@ -2,6 +2,7 @@ import { About } from "../sections/About";
 import { Contact } from "../sections/Contact";
 import Main from "../sections/Main";
 import { Projects } from "../sections/Projects";
+import type { FC } from "react";
 
 export enum SECTION {
   MAIN = "main",
@@ -14,7 +15,7 @@ type Section = {
   id: SECTION;
   title: string;
   order: number;
-  component: React.FC<any>;
+  component: FC<any>;
   showInNav?: boolean;
 };
 
