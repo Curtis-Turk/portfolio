@@ -3,6 +3,7 @@ import { useIntersectionObserver } from "../hooks/useIntersectionObserver";
 import { SECTION } from "../utils/sections";
 import { nameEmojis } from "../utils/names";
 import { useName } from "../hooks/NameContext";
+import { ExternalLink } from "lucide-react";
 
 type Project = {
   title: string;
@@ -77,31 +78,41 @@ export function Projects({ onIntersect }: ProjectProps) {
 
   const projectCard = (project: Project) => (
     <div className="project-card carousel-card">
-      <button
-        onClick={() => project.link && window.open(project.link, "_blank")}
-      >
-        <h3>{project.title}</h3>
-        {project.image && (
-          <img
-            src={project.image}
-            alt={`${project.title} screenshot`}
-            className="project-image"
-          />
+      <div>
+        {project.link ? (
+          <a
+            href={project.link}
+            target="_blank"
+            rel="noreferrer"
+            className="project-link"
+          >
+            <h3>{project.title}</h3>
+            <ExternalLink className="link-icon" size={16} />
+          </a>
+        ) : (
+          <h3>{project.title}</h3>
         )}
-        <p>{project.description}</p>
-        <div className="technologies">
-          {project.technologies.map((tech, index) => (
-            <span
-              key={index}
-              className={`tech-tag ${hoveredSkill === tech ? "highlight" : ""}`}
-              onMouseEnter={() => setHoveredSkill(tech)}
-              onMouseLeave={() => setHoveredSkill(null)}
-            >
-              {tech}
-            </span>
-          ))}
-        </div>
-      </button>
+      </div>
+      {project.image && (
+        <img
+          src={project.image}
+          alt={`${project.title} screenshot`}
+          className="project-image"
+        />
+      )}
+      <p>{project.description}</p>
+      <div className="technologies">
+        {project.technologies.map((tech, index) => (
+          <span
+            key={index}
+            className={`tech-tag ${hoveredSkill === tech ? "highlight" : ""}`}
+            onMouseEnter={() => setHoveredSkill(tech)}
+            onMouseLeave={() => setHoveredSkill(null)}
+          >
+            {tech}
+          </span>
+        ))}
+      </div>
     </div>
   );
 

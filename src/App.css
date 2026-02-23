@@ -286,13 +286,6 @@ button {
 .indicator.active {
   background: var(--primary-color);
 }
-.previous-section,
-.next-section {
-}
-.previous-section {
-}
-.next-section {
-}
 
 @media (max-width: 700px) {
   .projects-carousel {
@@ -321,11 +314,31 @@ button {
 }
 
 .project-card h3 {
-  color: white;
   margin: 0 0 1rem 0;
 }
 
+.project-link:hover {
+  color: var(--primary-color);
+}
+
+.project-link .link-icon {
+  transition: transform 0.18s ease;
+}
+
+.project-link:hover .link-icon {
+  transform: scale(1.25);
+  color: var(--primary-color);
+}
+
+.project-link {
+  display: inline-flex;
+  gap: 8px;
+  text-decoration: none;
+  color: inherit;
+}
+
 .project-card p {
+  display: flex 1;
   color: #cccccc;
   line-height: 1.5;
   margin-bottom: 1rem;
