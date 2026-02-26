@@ -7,7 +7,6 @@
   --primary-color: rgb(255, 85, 0);
 }
 
-/* Remove default page margins so content sits flush to the viewport */
 html,
 body,
 #root {

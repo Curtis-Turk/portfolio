@@ -2,10 +2,10 @@ import { motion } from "framer-motion";
 
 export const PEAT_GRADIENTS = [
   "linear-gradient(90deg,#824C0E,#7a2f07)",
-  "linear-gradient(90deg,#3b3410,#824C0E)",
-  "linear-gradient(90deg,#2f2f2f,#4b4b4b)",
-  "linear-gradient(90deg,#7a2f07,#6b4500)",
-  "linear-gradient(90deg,#232323,#3a3a3a)",
+  "linear-gradient(90deg,#BAA229,#824C0E)",
+  "linear-gradient(90deg,#B33030,#4b4b4b)",
+  "linear-gradient(90deg,#58AD09,#E8E11A)",
+  "linear-gradient(90deg,#42A66D,#337FBD)",
   "linear-gradient(90deg,#8b4a0f,#4DAD21)",
   "linear-gradient(90deg,#665016,#3f3f45)",
   "linear-gradient(90deg,#3f3f45,#8b4a0f)",
