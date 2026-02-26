@@ -1,17 +1,17 @@
 import { motion } from "framer-motion";
 
-const PEAT_GRADIENTS = [
-  "linear-gradient(90deg,#2c1a04,#7a2f07)",
-  "linear-gradient(90deg,#3b3410,#2c1a04)",
+export const PEAT_GRADIENTS = [
+  "linear-gradient(90deg,#824C0E,#7a2f07)",
+  "linear-gradient(90deg,#3b3410,#824C0E)",
   "linear-gradient(90deg,#2f2f2f,#4b4b4b)",
   "linear-gradient(90deg,#7a2f07,#6b4500)",
   "linear-gradient(90deg,#232323,#3a3a3a)",
-  "linear-gradient(90deg,#8b4a0f,#3f3f45)",
+  "linear-gradient(90deg,#8b4a0f,#4DAD21)",
   "linear-gradient(90deg,#665016,#3f3f45)",
   "linear-gradient(90deg,#3f3f45,#8b4a0f)",
 ];
 
-const TEXTURE_OPACITIES = [0.08, 0.06, 0.1, 0.05, 0.07];
+export const TEXTURE_OPACITIES = [0.08, 0.06, 0.1, 0.05, 0.07];
 
 export default function PeatLayer({
   index,

@@ -7,6 +7,15 @@
   --primary-color: rgb(255, 85, 0);
 }
 
+/* Remove default page margins so content sits flush to the viewport */
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
 [data-theme="dark"] {
   --background-color: #000000;
   --text-color: #ffffff;

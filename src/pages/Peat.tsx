@@ -30,73 +30,40 @@ const Peat = () => {
         flexDirection: "column",
       }}
     >
-      <Link to="/" style={{ fontSize: 30, textDecoration: "none" }}>
-        {nameEmojis[currentName].title}
-      </Link>
-      {layerCount > 0 && (
-        <button
-          type="button"
-          onClick={() => setLayerCount(0)}
-          style={{
-            height: 48,
-            width: 48,
-            padding: 0,
-            border: "1px solid #1f2937",
-            color: "#94a3b8",
-            background: "transparent",
-            borderRadius: 6,
-            cursor: "pointer",
-          }}
-        >
-          <RotateCcw size={16} />
-        </button>
-      )}
+      <div style={{ justifyContent: "space-between" }}>
+        <Link to="/" style={{ fontSize: 30, textDecoration: "none" }}>
+          {nameEmojis[currentName].title}
+        </Link>
+        {layerCount} layer{layerCount !== 1 ? "s" : ""}
+        {layerCount > 0 && (
+          <button
+            type="button"
+            onClick={() => setLayerCount(0)}
+            style={{
+              height: 48,
+              width: 48,
+              padding: 0,
+              border: "1px solid #1f2937",
+              color: "#94a3b8",
+              background: "transparent",
+              borderRadius: 6,
+              cursor: "pointer",
+            }}
+          >
+            <RotateCcw size={16} />
+          </button>
+        )}
+      </div>
       <div
         style={{
           flex: 1,
           display: "flex",
           flexDirection: "column",
           justifyContent: "flex-end",
-          paddingLeft: 24,
-          paddingRight: 24,
-          paddingBottom: 48,
           overflowY: "auto",
         }}
       >
-        <div>
-          <div
-            style={{
-              textAlign: "center",
-              marginBottom: 16,
-              position: "sticky",
-              top: 0,
-              background: "#071014",
-              paddingTop: 8,
-              paddingBottom: 8,
-              zIndex: 10,
-            }}
-          >
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-              }}
-            >
-              <span
-                style={{
-                  color: "#94a3b8",
-                  fontSize: 13,
-                  fontFamily:
-                    "ui-monospace, SFMono-Regular, Menlo, Monaco, monospace",
-                }}
-              >
-                {layerCount} layer{layerCount !== 1 ? "s" : ""}
-              </span>
-            </div>
-          </div>
-          <PeatStack count={layerCount} />
-        </div>
+        <PeatStack count={layerCount} />
       </div>
     </div>
   );
