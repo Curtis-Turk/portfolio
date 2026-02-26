@@ -1,27 +1,23 @@
-import { motion } from "framer-motion";
-import { Layers, RotateCcw } from "lucide-react";
-import { useCallback, useState } from "react";
-import PeatStack from "../components/PeatStack";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+
+import PeatStack from "../components/peat/PeatStack";
+import { nameEmojis } from "../utils/names";
+import { useName } from "../hooks/NameContext";
+import { RotateCcw } from "lucide-react";
 
 const Peat = () => {
-  const [inputValue, setInputValue] = useState("");
   const [layerCount, setLayerCount] = useState(0);
 
-  const handleSubmit = useCallback(
-    (e: React.FormEvent) => {
-      e.preventDefault();
-      const num = parseInt(inputValue, 10);
-      if (num > 0) {
-        setLayerCount((prev) => prev + num);
-        setInputValue("");
-      }
-    },
-    [inputValue],
-  );
+  const { currentName } = useName();
 
-  const handleReset = useCallback(() => {
-    setLayerCount(0);
-    setInputValue("");
+  useEffect(() => {
+    const intervalID = setInterval(() => {
+      const rand = Math.floor(Math.random() * 5) + 1;
+      setLayerCount((prev) => prev + rand);
+    }, 3000);
+
+    return () => clearInterval(intervalID);
   }, []);
 
   return (
@@ -34,84 +30,27 @@ const Peat = () => {
         flexDirection: "column",
       }}
     >
-      <motion.div
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.2, duration: 0.5 }}
-        className={undefined}
-        style={{ paddingLeft: 24, paddingRight: 24, paddingBottom: 32 }}
-      >
-        <form
-          onSubmit={handleSubmit}
+      <Link to="/" style={{ fontSize: 30, textDecoration: "none" }}>
+        {nameEmojis[currentName].title}
+      </Link>
+      {layerCount > 0 && (
+        <button
+          type="button"
+          onClick={() => setLayerCount(0)}
           style={{
-            display: "flex",
-            alignItems: "center",
-            gap: 12,
-            maxWidth: 384,
-            margin: "0 auto",
+            height: 48,
+            width: 48,
+            padding: 0,
+            border: "1px solid #1f2937",
+            color: "#94a3b8",
+            background: "transparent",
+            borderRadius: 6,
+            cursor: "pointer",
           }}
         >
-          <div style={{ position: "relative", flex: 1 }}>
-            <input
-              type="number"
-              min="1"
-              placeholder="Add layers"
-              value={inputValue}
-              onChange={(e) => setInputValue(e.target.value)}
-              style={{
-                background: "#0b1113",
-                border: "1px solid #1f2933",
-                color: "#fff",
-                height: 48,
-                textAlign: "center",
-                fontSize: 18,
-                fontFamily:
-                  "ui-monospace, SFMono-Regular, Menlo, Monaco, monospace",
-                outline: "none",
-                paddingLeft: 8,
-                paddingRight: 8,
-                borderRadius: 6,
-              }}
-            />
-          </div>
-          <button
-            type="submit"
-            disabled={!inputValue || parseInt(inputValue) < 1}
-            style={{
-              height: 48,
-              padding: "0 24px",
-              background: "#92400e",
-              color: "#fff",
-              fontWeight: 500,
-              border: "none",
-              borderRadius: 6,
-              cursor: "pointer",
-              opacity: !inputValue || parseInt(inputValue) < 1 ? 0.3 : 1,
-            }}
-          >
-            Add
-          </button>
-          {layerCount > 0 && (
-            <button
-              type="button"
-              onClick={handleReset}
-              style={{
-                height: 48,
-                width: 48,
-                padding: 0,
-                border: "1px solid #1f2937",
-                color: "#94a3b8",
-                background: "transparent",
-                borderRadius: 6,
-                cursor: "pointer",
-              }}
-            >
-              <RotateCcw size={16} />
-            </button>
-          )}
-        </form>
-      </motion.div>
-
+          <RotateCcw size={16} />
+        </button>
+      )}
       <div
         style={{
           flex: 1,
@@ -137,16 +76,24 @@ const Peat = () => {
               zIndex: 10,
             }}
           >
-            <span
+            <div
               style={{
-                color: "#94a3b8",
-                fontSize: 13,
-                fontFamily:
-                  "ui-monospace, SFMono-Regular, Menlo, Monaco, monospace",
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
               }}
             >
-              {layerCount} layer{layerCount !== 1 ? "s" : ""}
-            </span>
+              <span
+                style={{
+                  color: "#94a3b8",
+                  fontSize: 13,
+                  fontFamily:
+                    "ui-monospace, SFMono-Regular, Menlo, Monaco, monospace",
+                }}
+              >
+                {layerCount} layer{layerCount !== 1 ? "s" : ""}
+              </span>
+            </div>
           </div>
           <PeatStack count={layerCount} />
         </div>

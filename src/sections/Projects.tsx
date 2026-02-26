@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { useIntersectionObserver } from "../hooks/useIntersectionObserver";
 import { SECTION } from "../utils/sections";
 import { nameEmojis } from "../utils/names";
@@ -140,6 +141,10 @@ export function Projects({ onIntersect }: ProjectProps) {
           />
         ))}
       </div>
+
+      <Link to="/peat" style={{ fontSize: 13, color: "#92400e" }}>
+        Peat
+      </Link>
     </section>
   );
 }

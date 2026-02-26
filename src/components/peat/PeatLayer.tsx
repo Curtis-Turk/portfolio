@@ -17,20 +17,29 @@ export default function PeatLayer({
   index,
   total,
   delay,
+  bottom = 0,
+  height = 8,
+  gradient,
+  textureOpacity = 0.07,
+  offsetX = 0,
+  rotation = 0,
+  borderRadius = 2,
 }: {
   index: number;
   total: number;
   delay: number;
+  bottom?: number;
+  height?: number;
+  gradient?: string;
+  textureOpacity?: number;
+  offsetX?: number;
+  rotation?: number;
+  borderRadius?: number;
 }) {
-  const gradient = PEAT_GRADIENTS[index % PEAT_GRADIENTS.length];
-  const textureOpacity = TEXTURE_OPACITIES[index % TEXTURE_OPACITIES.length];
-
-  // Random variations for each layer
-  const width = 85 + Math.random() * 15;
-  const height = 6 + Math.random() * 6;
-  const offsetX = (Math.random() - 0.5) * 8;
-  const rotation = (Math.random() - 0.5) * 1.5;
-  const borderRadius = Math.random() * 3;
+  const resolvedGradient =
+    gradient ?? PEAT_GRADIENTS[index % PEAT_GRADIENTS.length];
+  const resolvedTexture =
+    textureOpacity ?? TEXTURE_OPACITIES[index % TEXTURE_OPACITIES.length];
 
   return (
     <motion.div
@@ -38,25 +47,28 @@ export default function PeatLayer({
       animate={{ y: 0, opacity: 1, scaleY: 1 }}
       transition={{
         delay: delay,
-        duration: 0.4,
+        duration: 0.36,
         ease: [0.22, 1, 0.36, 1],
-        opacity: { duration: 0.2, delay: delay },
+        opacity: { duration: 0.18, delay: delay },
       }}
       style={{
-        width: "100%",
+        position: "absolute",
+        left: 0,
+        right: 0,
+        bottom: `${bottom}px`,
         transformOrigin: "bottom",
         display: "flex",
         justifyContent: "center",
-        zIndex: total - index,
+        zIndex: index + 1,
       }}
     >
       <div
         style={{
           position: "relative",
-          background: gradient,
+          background: resolvedGradient,
           overflow: "hidden",
           borderTop: "1px solid rgba(255,255,255,0.05)",
-          width: `${width}%`,
+          width: "100%",
           height: `${height}px`,
           transform: `translateX(${offsetX}px) rotate(${rotation}deg)`,
           borderRadius: `${borderRadius}px`,
@@ -65,11 +77,7 @@ export default function PeatLayer({
         <div
           style={{
             position: "absolute",
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            opacity: textureOpacity,
+            opacity: resolvedTexture,
             backgroundImage:
               "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E\")",
             backgroundRepeat: "repeat",
