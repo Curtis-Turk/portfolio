@@ -20,6 +20,10 @@ const Peat = () => {
     return () => clearInterval(intervalID);
   }, []);
 
+  if (layerCount > 100) {
+    setLayerCount(0);
+  }
+
   return (
     <div
       style={{
