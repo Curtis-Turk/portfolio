@@ -20,9 +20,11 @@ const Peat = () => {
     return () => clearInterval(intervalID);
   }, []);
 
-  if (layerCount > 100) {
-    setLayerCount(0);
-  }
+  useEffect(() => {
+    if (layerCount > 100) {
+      setLayerCount(0);
+    }
+  }, [layerCount]);
 
   return (
     <div

@@ -1,14 +1,29 @@
 import { motion } from "framer-motion";
 
+const colours = [
+  "#824C0E",
+  "#7a2f07",
+  "#BAA229",
+  "#B33030",
+  "#4b4b4b",
+  "#58AD09",
+  "#E8E11A",
+  "#42A66D",
+  "#337FBD",
+  "#3f3f45",
+  "#8b4a0f",
+  "#665016",
+];
+
 export const PEAT_GRADIENTS = [
   "linear-gradient(90deg,#824C0E,#7a2f07)",
   "linear-gradient(90deg,#BAA229,#824C0E)",
-  "linear-gradient(90deg,#B33030,#4b4b4b)",
+  "linear-gradient(90deg,#B33030,#58AD09)",
   "linear-gradient(90deg,#58AD09,#E8E11A)",
   "linear-gradient(90deg,#42A66D,#337FBD)",
   "linear-gradient(90deg,#8b4a0f,#4DAD21)",
-  "linear-gradient(90deg,#665016,#3f3f45)",
-  "linear-gradient(90deg,#3f3f45,#8b4a0f)",
+  "linear-gradient(90deg,#665016,#58AD09)",
+  "linear-gradient(90deg,#42A66D,#8b4a0f)",
 ];
 
 export const TEXTURE_OPACITIES = [0.08, 0.06, 0.1, 0.05, 0.07];
