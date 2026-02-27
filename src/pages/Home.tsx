@@ -19,6 +19,7 @@ const Home = () => {
       setActiveSection(section);
     }
   };
+
   return (
     <div className="App">
       <SectionProvider>

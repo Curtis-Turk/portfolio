@@ -85,7 +85,6 @@ export default function PeatStack({ count }: { count: number }) {
           <PeatLayer
             key={spec.id}
             index={index}
-            total={Math.max(count, 1)}
             delay={index * 0.08}
             bottom={index * layerSpacing}
             height={spec.height}

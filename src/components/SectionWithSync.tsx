@@ -1,12 +1,12 @@
 import { useSection } from "../hooks/SectionContext";
-import { SECTION } from "../utils/sections";
+import { Section, SECTION } from "../utils/sections";
 
 export const SectionWithSync = ({
   section,
   SectionComponent,
   onAppIntersect,
 }: {
-  section: any;
+  section: Section;
   SectionComponent: React.ComponentType<any>;
   onAppIntersect: (section: SECTION, isIntersecting: boolean) => void;
 }) => {

@@ -93,24 +93,24 @@ button {
   position: fixed;
   width: 100%;
   height: var(--header-height);
-  padding: 10px 0;
+  padding: 10px, 10px;
   background-color: var(--background-color);
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
   top: 0;
   z-index: 1000;
 }
 
 .header-content {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  width: 500px;
+  width: 100%;
+  justify-content: space-between;
 }
 
 .header-content > button {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  color: var(--text-color);
+  text-decoration: none;
+  font-size: 2.5vh;
+  transition: color 0.3s ease;
   gap: 0.5rem;
   cursor: pointer;
   position: relative;
@@ -128,13 +128,6 @@ button {
 
 .header-content > button:hover .orange {
   display: flex;
-}
-
-.header-content > button {
-  color: var(--text-color);
-  text-decoration: none;
-  font-size: 2.5vh;
-  transition: color 0.3s ease;
 }
 
 .header-content > button:hover {
@@ -295,16 +288,6 @@ button {
   background: var(--primary-color);
 }
 
-@media (max-width: 700px) {
-  .projects-carousel {
-    gap: 0.5rem;
-  }
-
-  .carousel-btn {
-    font-size: 1.4rem;
-  }
-}
-
 .project-card {
   background: #1a1a1a;
   border-radius: 8px;
@@ -406,6 +389,14 @@ button {
 }
 
 @media (max-width: 700px) {
+  .projects-carousel {
+    gap: 0.5rem;
+  }
+
+  .carousel-btn {
+    font-size: 1.4rem;
+  }
+
   .projects-grid {
     display: flex;
     flex-direction: column;

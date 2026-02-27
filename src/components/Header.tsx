@@ -20,12 +20,18 @@ function Header({ activeSection }: HeaderProps) {
   };
 
   return (
-    <div id="header">
+    <div id="header" className="header-content">
+      <button
+        onClick={() => navigateTo(SECTION.MAIN)}
+        className={activeSection === SECTION.MAIN ? "active" : ""}
+      >
+        {nameEmojis[currentName].title}
+      </button>
       <div className="header-content">
-        {SECTIONS.map((section) => (
+        {SECTIONS.slice(1, -1).map((section) => (
           <button
             key={section.id}
-            id={`header-${section}`}
+            id={`header-${section.id}`}
             onClick={() => navigateTo(section.id)}
             className={activeSection === section.id ? "active" : ""}
           >
@@ -34,8 +40,8 @@ function Header({ activeSection }: HeaderProps) {
               : section.title}
           </button>
         ))}
-        <button onClick={toggleTheme}>{theme === "light" ? "🌙" : "🌞"}</button>
       </div>
+      <button onClick={toggleTheme}>{theme === "light" ? "🌙" : "🌞"}</button>
     </div>
   );
 }
