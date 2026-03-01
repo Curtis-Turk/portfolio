@@ -93,11 +93,9 @@ button {
   position: fixed;
   width: 100%;
   height: var(--header-height);
-  padding: 10px, 10px;
+  padding-top: 10px;
   background-color: var(--background-color);
   display: flex;
-  /* justify-content: center; */
-  top: 0;
   z-index: 1000;
 }
 
@@ -117,7 +115,7 @@ button {
   color: var(--text-color);
 }
 
-.header-content .orange {
+.header-content .navigation-button {
   display: none;
   justify-content: center;
   width: 100%;
@@ -126,7 +124,7 @@ button {
   padding-top: 0.5rem;
 }
 
-.header-content > button:hover .orange {
+.header-content > button:hover .navigation-button {
   display: flex;
 }
 
@@ -138,8 +136,10 @@ button {
   color: var(--primary-color);
 }
 
-.header-content > button.active .orange {
+.header-sections {
   display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #citrus {
@@ -175,7 +175,7 @@ button {
   gap: 2rem;
 }
 
-.orange {
+.navigation-button {
   font-size: 4vh;
   background: none;
   color: inherit;
@@ -191,11 +191,14 @@ button {
   font-size: 1.5vh;
 }
 
-.orange:hover {
+.header-sections {
+}
+
+.navigation-button:hover {
   transform: scale(1.5);
 }
 
-.orange:active {
+.navigation-button:active {
   transform: scale(1.9);
 }
 

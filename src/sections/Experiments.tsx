@@ -11,7 +11,7 @@ function Experiments({ onIntersect }: ExperimentsProps) {
 
   return (
     <section id={SECTION.EXPERIMENTS} ref={ref} className="section">
-      <Link to="/peat" style={{ fontSize: 13, color: "#92400e" }}>
+      <Link to="experiments/peat" style={{ fontSize: 13, color: "#92400e" }}>
         Peat
       </Link>
     </section>

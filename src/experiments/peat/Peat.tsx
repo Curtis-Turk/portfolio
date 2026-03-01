@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-import PeatStack from "../components/peat/PeatStack";
-import { nameEmojis } from "../utils/names";
-import { useName } from "../hooks/NameContext";
+import PeatStack from "./PeatStack";
+import { nameEmojis } from "../../utils/names";
+import { useName } from "../../hooks/NameContext";
 import { RotateCcw } from "lucide-react";
 
 const Peat = () => {

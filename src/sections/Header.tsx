@@ -21,19 +21,16 @@ function Header({ activeSection }: HeaderProps) {
 
   return (
     <div id="header" className="header-content">
-      <button
-        onClick={() => navigateTo(SECTION.MAIN)}
-        className={activeSection === SECTION.MAIN ? "active" : ""}
-      >
+      <button onClick={() => navigateTo(SECTION.MAIN)}>
         {nameEmojis[currentName].title}
       </button>
-      <div className="header-content header-sections">
+      <div className="header-sections">
         {SECTIONS.slice(1).map((section) => (
           <button
             key={section.id}
-            id={`header-${section.id}`}
+            id={`header-${section}`}
             onClick={() => navigateTo(section.id)}
-            className={`${activeSection === section.id ? "active" : ""}`}
+            className={activeSection === section.id ? "active" : ""}
           >
             {section.title}
           </button>

@@ -1,5 +1,5 @@
 import "./App.css";
-import Peat from "./pages/Peat";
+import Peat from "./experiments/peat/Peat";
 import Home from "./pages/Home";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { NameProvider } from "./hooks/NameContext";
@@ -12,7 +12,7 @@ function App() {
     <NameProvider value={{ currentName, setCurrentName }}>
       <BrowserRouter>
         <Routes>
-          <Route path="/peat" element={<Peat />} />
+          <Route path="experiments/peat" element={<Peat />} />
           <Route path="/*" element={<Home />} />
         </Routes>
       </BrowserRouter>

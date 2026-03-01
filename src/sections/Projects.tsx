@@ -121,11 +121,13 @@ export function Projects({ onIntersect }: ProjectProps) {
       <h2 id="projects-title">Projects</h2>
 
       <div className="projects-carousel">
-        <button className="orange" onClick={prev} aria-label="Previous project">
+        <button onClick={prev} aria-label="Previous project">
           {nameEmojis[currentName].colourDot}
         </button>
+
         {projectCard(currentProject)}
-        <button className="orange" onClick={next} aria-label="Next project">
+
+        <button onClick={next} aria-label="Next project">
           {nameEmojis[currentName].colourDot}
         </button>
       </div>

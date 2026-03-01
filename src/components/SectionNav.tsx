@@ -19,7 +19,7 @@ export const SectionNav: React.FC<SectionNavProps> = ({
   };
 
   return (
-    <button className="orange" onClick={handleClick}>
+    <button className="navigation-button" onClick={handleClick}>
       {nameEmojis[currentName].colourDot}
     </button>
   );
